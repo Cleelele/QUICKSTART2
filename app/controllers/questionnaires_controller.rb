@@ -1,11 +1,16 @@
 class QuestionnairesController < ApplicationController
   def new
     @questionaire = Questionaire.new
+    authorize(@questionnaire)
   end
 
   def create
+<<<<<<< HEAD
     @questionaire = Questionaire.new(questionnare_params)
 
+=======
+    @questionaire = Questionaire.new(article_params)
+>>>>>>> a3845b4a0e11daf902000f354edd5ee134dd4857
     respond_to do |format|
       if @questionaire.save
         format.html { redirect_to new_questionaire_path(@questionaire), notice: "Restart your questionaire" }
