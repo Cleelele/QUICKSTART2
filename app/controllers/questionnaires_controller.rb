@@ -5,7 +5,7 @@ class QuestionnairesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    @questionaire = Questionaire.new(article_params)
     respond_to do |format|
       if @questionaire.save
         format.html { redirect_to new_questionaire_path(@questionaire), notice: "Restart your questionaire" }
@@ -20,7 +20,7 @@ class QuestionnairesController < ApplicationController
   def index
     @questionaire = Questionaire.all
   end
-  
+
   def destroy
     @questionaire.destroy
 
