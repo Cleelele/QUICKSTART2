@@ -1,5 +1,6 @@
 class QuestionnairesController < ApplicationController
   def new
+    authorize(@questionnaire)
   end
   def create
   end
