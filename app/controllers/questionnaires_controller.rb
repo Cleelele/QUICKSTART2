@@ -4,7 +4,7 @@ class QuestionnairesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    @questionaire = Questionaire.new(questionnare_params)
 
     respond_to do |format|
       if @questionaire.save
@@ -20,7 +20,7 @@ class QuestionnairesController < ApplicationController
   def index
     @questionaire = Questionaire.all
   end
-  
+
   def destroy
     @questionaire.destroy
 
