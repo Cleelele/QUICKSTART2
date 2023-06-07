@@ -1,0 +1,229 @@
+<div>
+  <h1>Questionnaire</h1>
+</div>
+
+<%= simple_form_for @personality do |f| %>
+  <div>
+    <p><strong>1. How would you describe your ideal weekend?</strong></p>
+    <%= f.radio_button :answer, "Adventurous outdoor activities (1)" %>
+    <%= f.label :answer, "Adventurous outdoor activities (1)" %><br>
+    <%= f.radio_button :answer, "Exploring museums and cultural sites (2)" %>
+    <%= f.label :answer, "Exploring museums and cultural sites (2)" %><br>
+    <%= f.radio_button :answer, "Trying new restaurants and cuisines (3)" %>
+    <%= f.label :answer, "Trying new restaurants and cuisines (3)" %><br>
+    <%= f.radio_button :answer, "Enjoying the nightlife and live music (4)" %>
+    <%= f.label :answer, "Enjoying the nightlife and live music (4)" %><br>
+    <%= f.radio_button :answer, "Engaging in wellness activities and fitness (5)" %>
+    <%= f.label :answer, "Engaging in wellness activities and fitness (5)" %><br>
+    <%= f.radio_button :answer, "Attending art exhibitions and performances (6)" %>
+    <%= f.label :answer, "Attending art exhibitions and performances (6)" %><br>
+    <%= f.radio_button :answer, "Spending quality time with family in kid-friendly locations (7)" %>
+    <%= f.label :answer, "Spending quality time with family in kid-friendly locations (7)" %><br>
+    <%= f.radio_button :answer, "Bringing my professionalism one step further (8)" %>
+    <%= f.label :answer, "Bringing my professionalism one step further (8)" %><br>
+    <%= f.radio_button :answer, "Accessible and inclusive activities for people with disabilities (9)" %>
+    <%= f.label :answer, "Accessible and inclusive activities for people with disabilities (9)" %><br>
+
+<div class= "personality">
+
+    <p><strong>2. Which of the following interests you the most? </strong></p>
+    <%= f.radio_button :answer, " a) Outdoor sports and adventure (1)" %>
+    <%= f.label :answer, " a) Outdoor sports and adventure (1)" %><br>
+    <%= f.radio_button :answer, " b) Art, history, and culture (2)" %>
+    <%= f.label :answer, " b) Art, history, and culture (2)" %><br>
+    <%= f.radio_button :answer, "c) Food and culinary experiences (3)" %>
+    <%= f.label :answer, "c) Food and culinary experiences (3)" %><br>
+    <%= f.radio_button :answer, " d) Nightlife and entertainment (4)" %>
+    <%= f.label :answer, " d) Nightlife and entertainment (4)" %><br>
+    <%= f.radio_button :answer, "  e)  How to keep my mind and my body in good shape (5)" %>
+    <%= f.label :answer, "  e)  How to keep my mind and my body in good shape  (5)" %><br>
+    <%= f.radio_button :answer, "  f) Performing arts and music (6)" %>
+    <%= f.label :answer, "  f) Performing arts and music (6)" %><br>
+    <%= f.radio_button :answer, "   g) Family-friendly activities and attractions (7)" %>
+    <%= f.label :answer, "   g) Family-friendly activities and attractions (7)" %><br>
+    <%= f.radio_button :answer, "   h) Professional networking and career development (8)" %>
+    <%= f.label :answer, "Bringing my professionalism one step further (8)" %><br>
+    <%= f.radio_button :answer, "   i) Inclusive activities for people with disabilities (9)" %>
+    <%= f.label :answer, "   i) Inclusive activities for people with disabilities (9)" %><br>
+   </div>
+
+
+
+   <p><strong>3. How do you prefer to spend your free time? </strong></p>
+    <%= f.radio_button :answer, "  a) Exploring nature and outdoor spaces (1)" %>
+    <%= f.label :answer, "  a) Exploring nature and outdoor spaces (1)" %><br>
+    <%= f.radio_button :answer, "  b) Visiting museums and historical sites (2)" %>
+    <%= f.label :answer, "  b) Visiting museums and historical sites (2)" %><br>
+    <%= f.radio_button :answer, " c) Trying new restaurants and cuisines (3)" %>
+    <%= f.label :answer, " c) Trying new restaurants and cuisines (3)" %><br>
+    <%= f.radio_button :answer, "   d) Going to parties and live music events (4)" %>
+    <%= f.label :answer, "    d) Going to parties and live music events (4)" %><br>
+    <%= f.radio_button :answer, "    e) Engaging in fitness activities and sports (5)" %>
+    <%= f.label :answer, "     e) Engaging in fitness activities and sports (5)" %><br>
+    <%= f.radio_button :answer, "   f) Attending theatre and music performances (6)" %>
+    <%= f.label :answer, "  f) Attending theatre and music performances (6)" %><br>
+    <%= f.radio_button :answer, "     g) Finding activities suitable for the whole family (7)" %>
+    <%= f.label :answer, "     g) Finding activities suitable for the whole family (7)" %><br>
+    <%= f.radio_button :answer, "      h) Participating in industry-specific events and conferences (8)" %>
+    <%= f.label :answer, "  h) Participating in industry-specific events and conferences (8)" %><br>
+    <%= f.radio_button :answer, "    i) Engaging in activities that are accessible for people with disabilities (9)" %>
+    <%= f.label :answer, "   i) Engaging in activities that are accessible for people with disabilities (9)" %><br>
+
+
+
+   <p><strong>4. What type of music fits your mood? </strong></p>
+    <%= f.radio_button :answer, "   a) Motivational music for certain adventurous Activities (1)" %>
+    <%= f.label :answer, "   a) Motivational music for certain adventurous Activities (1)" %><br>
+    <%= f.radio_button :answer, "   b) Music originated from the city/country you're visiting (2)" %>
+    <%= f.label :answer, "   b) Music originated from the city/country you're visiting (2)" %><br>
+    <%= f.radio_button :answer, "    c) Music you like to listen to while eating (3)" %>
+    <%= f.label :answer, "    c) Music you like to listen to while eating (3)" %><br>
+    <%= f.radio_button :answer, "     d) Party related Music (4)" %>
+    <%= f.label :answer, "     d) Party related Music (4)" %><br>
+    <%= f.radio_button :answer, "      e) Relaxing/chillout Music (5)" %>
+    <%= f.label :answer, "       e) Relaxing/chillout Music (5)" %><br>
+    <%= f.radio_button :answer, "   f)  Classical/Instrumental (6)" %>
+    <%= f.label :answer, "   f)  Classical/Instrumental (6)" %><br>
+    <%= f.radio_button :answer, "     g)  Music for the whole Family (7)" %>
+    <%= f.label :answer, "     g)  Music for the whole Family (7)" %><br>
+    <%= f.radio_button :answer, " h)  Music which is useful for Work/Career (8)" %>
+    <%= f.label :answer, " h)  Music which is useful for Work/Career (8)" %><br>
+    <%= f.radio_button :answer, "      i) Venues with assistive listening systems for people with disabilities (9)" %>
+    <%= f.label :answer, "     i) Venues with assistive listening systems for people with disabilities (9)" %><br>
+
+
+
+
+   <p><strong>5. How do you like to stay active? </strong></p>
+    <%= f.radio_button :answer, "     a) Hiking, biking, surfing or other extreme sports (1)" %>
+    <%= f.label :answer, "    a) Hiking, biking, surfing or other extreme sports (1)" %><br>
+    <%= f.radio_button :answer, "      g) Engaging in local activities or sports (2)" %>
+    <%= f.label :answer, "     g) Engaging in local activities or sports (2)" %><br>
+    <%= f.radio_button :answer, "     e) Planning and preparing a meal for your loved ones (3)" %>
+    <%= f.label :answer, "   e) Planning and preparing a meal for your loved ones (3)" %><br>
+    <%= f.radio_button :answer, "      d) Dancing or clubbing (4)" %>
+    <%= f.label :answer, "       d) Dancing or clubbing (4)" %><br>
+    <%= f.radio_button :answer, "      b) Yoga, meditation, or mindfulness practices (5)" %>
+    <%= f.label :answer, "       b) Yoga, meditation, or mindfulness practices (5)" %><br>
+    <%= f.radio_button :answer, "      f) Martial arts or dance classes (6)" %>
+    <%= f.label :answer, "      f) Martial arts or dance classes (6)" %><br>
+    <%= f.radio_button :answer, "       c) Team sports or group fitness classes (7)" %>
+    <%= f.label :answer, "       c) Team sports or group fitness classes (7)" %><br>
+    <%= f.radio_button :answer, "  h) Sports events or business-related fitness activities (8)" %>
+    <%= f.label :answer, "  h) Sports events or business-related fitness activities (8)" %><br>
+    <%= f.radio_button :answer, "       i) Inclusive sports and adaptive activities for people with disabilities (9)" %>
+    <%= f.label :answer, "    i) Inclusive sports and adaptive activities for people with disabilities (9)" %><br>
+
+
+
+   <p><strong>6. Which type of cultural experience interests you the most? </strong></p>
+    <%= f.radio_button :answer, "      a) Hiking/doing sports in an culturally important environment (1)" %>
+    <%= f.label :answer, "   a) Hiking/doing sports in an culturally important environment (1)" %><br>
+    <%= f.radio_button :answer, "      b) Art exhibitions and galleries/Historical tours and landmarks   (2)" %>
+    <%= f.label :answer, "     b) Art exhibitions and galleries/Historical tours and landmarks   (2)" %><br>
+    <%= f.radio_button :answer, "      c)  Food tours (3)" %>
+    <%= f.label :answer, "    c)  Food tours (3)" %><br>
+    <%= f.radio_button :answer, "        d) getting to know local music/artists related (4)" %>
+    <%= f.label :answer, "        d) getting to know local music/artists related (4)" %><br>
+    <%= f.radio_button :answer, "        e)  Get to know good jogging paths of the city (5)" %>
+    <%= f.label :answer, "         e)  Get to know good jogging paths of the city (5)" %><br>
+    <%= f.radio_button :answer, "        f) Music festivals and concerts (6)" %>
+    <%= f.label :answer, "        f) Music festivals and concerts (6)" %><br>
+    <%= f.radio_button :answer, "         g) Family-friendly cultural events (7)" %>
+    <%= f.label :answer, "        g) Family-friendly cultural events (7)" %><br>
+    <%= f.radio_button :answer, "     h) Business-related cultural events and conferences (8)" %>
+    <%= f.label :answer, "     h) Business-related cultural events and conferences (8)" %><br>
+    <%= f.radio_button :answer, "         i) Cultural venues with accessibility features for people with disabilities (9)" %>
+    <%= f.label :answer, "       i) Cultural venues with accessibility features for people with disabilities (9)" %><br>
+
+
+
+   <p><strong>7. Which activity appeals to you the most? </strong></p>
+    <%= f.radio_button :answer, "        a) Hiking in nature (1)" %>
+    <%= f.label :answer, "     a) Hiking in nature (1)" %><br>
+    <%= f.radio_button :answer, "     b) Exploring a new city (2)" %>
+    <%= f.label :answer, "     b) Exploring a new city (2)" %><br>
+    <%= f.radio_button :answer, "       c) Cooking a gourmet meal (3)" %>
+    <%= f.label :answer, "     c) Cooking a gourmet meal (3)" %><br>
+    <%= f.radio_button :answer, "      d) Going out at night (4)" %>
+    <%= f.label :answer, "        d) Going out at night (4)" %><br>
+    <%= f.radio_button :answer, "          e)  Wellness/Spa (5)" %>
+    <%= f.label :answer, "           e)  Wellness/Spa (5)" %><br>
+    <%= f.radio_button :answer, "          f)  Attending theaters/performances (6)" %>
+    <%= f.label :answer, "         f)  Attending theaters/performances (6)" %><br>
+    <%= f.radio_button :answer, "         g)  Family/inclusive Activities (7)" %>
+    <%= f.label :answer, "        g)  Family/inclusive Activities (7)" %><br>
+    <%= f.radio_button :answer, "       h)  Pitching/Networking Events (8)" %>
+    <%= f.label :answer, "       h)  Pitching/Networking Events (8)" %><br>
+    <%= f.radio_button :answer, "        i)  Activities appealing to handicapped people (9)" %>
+    <%= f.label :answer, "      i)  Activities appealing to handicapped people (9)" %><br>
+
+
+
+   <p><strong>8. How do you feel about social gatherings? </strong></p>
+    <%= f.radio_button :answer, "    a)  Adventurous - I enjoy meeting new people (1)" %>
+    <%= f.label :answer, "   a)  Adventurous - I enjoy meeting new people (1)" %><br>
+    <%= f.radio_button :answer, "      b) Cultural Enthusiast - I like socializing and engaging in conversations with others (2)" %>
+    <%= f.label :answer, "      b) Cultural Enthusiast - I like socializing and engaging in conversations with others (2)" %><br>
+    <%= f.radio_button :answer, "       c) Food Connoisseurs - I like to sit in public places to get some food (Restaurants) (3)" %>
+    <%= f.label :answer, "      c) Food Connoisseurs - I like to sit in public places to get some food (Restaurants) (3)" %><br>
+    <%= f.radio_button :answer, "    d) Nightlife Seeker - I  like meeting new people while going out at Night (4)" %>
+    <%= f.label :answer, "       d) Nightlife Seeker - I  like meeting new people while going out at Night (4)" %><br>
+    <%= f.radio_button :answer, "          e) Reserve - I find large social gatherings overwhelming and prefer solitude (5)" %>
+    <%= f.label :answer, "           e) Reserve - I find large social gatherings overwhelming and prefer solitude (5)" %><br>
+    <%= f.radio_button :answer, "            f) Observant - I enjoy people-watching and taking in the atmosphere (6)" %>
+    <%= f.label :answer, "           f) Observant - I enjoy people-watching and taking in the atmosphere (6)" %><br>
+    <%= f.radio_button :answer, "        g) Participative - I engage actively in group activities and enjoy group dynamic  Family-Friendly (7)" %>
+    <%= f.label :answer, "       g) Participative - I engage actively in group activities and enjoy group dynamic  Family-Friendly (7)" %><br>
+    <%= f.radio_button :answer, "      h) Reflective - I prefer one-on-one conversations and creating connections for my professional career (8)" %>
+    <%= f.label :answer, "       h) Reflective - I prefer one-on-one conversations and creating connections for my professional career (8)" %><br>
+    <%= f.radio_button :answer, "           i)  I don't have an issue with being handicapped in social gatherings (9)" %>
+    <%= f.label :answer, "        i)  I don't have an issue with being handicapped in social gatherings (9)" %><br>
+
+
+
+   <p><strong>9. Which leisure activity do you find most appealing? </strong></p>
+    <%= f.radio_button :answer, "     a) Gardening or tending to plants (1)" %>
+    <%= f.label :answer, "   a) Gardening or tending to plants (1)" %><br>
+    <%= f.radio_button :answer, "       b)  Visiting museums (2)" %>
+    <%= f.label :answer, "      b)  Visiting museums (2)" %><br>
+    <%= f.radio_button :answer, "       c)  Eating out in Restaurants (3)" %>
+    <%= f.label :answer, "        c)  Eating out in Restaurants (3)" %><br>
+    <%= f.radio_button :answer, "    d)  Going to Bars/Pubs (4)" %>
+    <%= f.label :answer, "        d)  Going to Bars/Pubs (4)" %><br>
+    <%= f.radio_button :answer, "           e)  Going to the Gym (5)" %>
+    <%= f.label :answer, "             e)  Going to the Gym (5)" %><br>
+    <%= f.radio_button :answer, "       f)  Going to the Opera (6)" %>
+    <%= f.label :answer, "          f)  Going to the Opera (6)" %><br>
+    <%= f.radio_button :answer, "          g)  Experiences for young and old (7)" %>
+    <%= f.label :answer, "       g)  Experiences for young and old (7)" %><br>
+    <%= f.radio_button :answer, "        h)  Attending networking fairs/events (8)" %>
+    <%= f.label :answer, "       h)  Attending networking fairs/events (8)" %><br>
+    <%= f.radio_button :answer, "           i)  handicapped accessible activities (9)" %>
+    <%= f.label :answer, "       i)  handicapped accessible activities (9)" %><br>
+
+
+
+   <p><strong>10.  Do you have any certain areas of expertise of knowledge that you are passionate about? </strong></p>
+    <%= f.radio_button :answer, "      a)  Enjoying the outdoors/being very active (1)" %>
+    <%= f.label :answer, "   a)  Enjoying the outdoors/being very active (1)" %><br>
+    <%= f.radio_button :answer, "      b)  High interest in cultural related activities (2)" %>
+    <%= f.label :answer, "     b)  High interest in cultural related activities (2)" %><br>
+    <%= f.radio_button :answer, "         c)  Cooking and eating food wherever and whenever (3)" %>
+    <%= f.label :answer, "          c)  Cooking and eating food wherever and whenever (3)" %><br>
+    <%= f.radio_button :answer, "   d)  Having fun, especially at Night (4)" %>
+    <%= f.label :answer, "       d)  Having fun, especially at Night (4)" %><br>
+    <%= f.radio_button :answer, "          e)  I am very keen on keeping my mental and my physical health in shape (5)" %>
+    <%= f.label :answer, "             e)  I am very keen on keeping my mental and my physical health in shape (5)" %><br>
+    <%= f.radio_button :answer, "         f)  I am highly interested in visiting  performances of any kind (Art, Festivals, Theatres) (6)" %>
+    <%= f.label :answer, "            f)  I am highly interested in visiting  performances of any kind (Art, Festivals, Theatres) (6)" %><br>
+    <%= f.radio_button :answer, "         g)   I have children and a Family to take care of (7)" %>
+    <%= f.label :answer, "      g)   I have children and a Family to take care of (7)" %><br>
+    <%= f.radio_button :answer, "           h)    Business and connecting is my passion (8)" %>
+    <%= f.label :answer, "         h)      Business and connecting is my passion (8)" %><br>
+    <%= f.radio_button :answer, "            i)  I know how to deal with being handicapped (9)" %>
+    <%= f.label :answer, "         i)  I know how to deal with being handicapped (9)" %><br>
+    <%= f.button :submit, 'Submit' %>
+  </div>
+
+<% end %>

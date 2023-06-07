@@ -5,6 +5,7 @@ class EventPolicy < ApplicationPolicy
     #   scope.all
     # end
   end
+
   def index?
     return true
   end

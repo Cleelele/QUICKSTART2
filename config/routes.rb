@@ -8,11 +8,14 @@ Rails.application.routes.draw do
     resources :messages, only: :create
   end
 
-  resources :event do
+  get '/events', to: 'events#index', as: 'event_index'
+
+
+  resources :events do
     resources :reviews
   end
 
-  resources :questionnaire, only: [:new, :create, :destroy]
+  resources :personalities, only: [:new, :create, :destroy]
 
   resources :bookmarks, only: [:new, :index, :create, :destroy]
 end
