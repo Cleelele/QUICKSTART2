@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_06_124224) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_07_100427) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_124224) do
     t.string "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.string "title"
+    t.bigint "bookmark_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bookmark_id"], name: "index_lists_on_bookmark_id"
+    t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -88,6 +98,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_124224) do
   add_foreign_key "bookmarks", "events"
   add_foreign_key "bookmarks", "users"
   add_foreign_key "chatrooms", "users"
+  add_foreign_key "lists", "bookmarks"
+  add_foreign_key "lists", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "questionnaires", "users"
