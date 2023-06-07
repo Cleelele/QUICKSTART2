@@ -8,7 +8,7 @@ class QuestionnairesController < ApplicationController
     @questionnaire = Questionnaire.new(questionnaire_params)
     respond_to do |format|
       if @questionnaire.save
-        format.html { redirect_to new_questionaire_path(@questionnaire), notice: "Restart your questionnaire" }
+        format.html { redirect_to new_questionnaire_path(@questionnaire), notice: "Restart your questionnaire" }
         format.json { render :show, status: :created, location: @questionnaire }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -20,7 +20,7 @@ class QuestionnairesController < ApplicationController
   def destroy
     @questionnaire.destroy
     respond_to do |format|
-      format.html { redirect_to new_questionaire_path, notice: "Restart your questionnaire" }
+      format.html { redirect_to new_questionnaire_path, notice: "Restart your questionnaire" }
       format.json { head :no_content }
     end
   end

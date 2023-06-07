@@ -8,11 +8,11 @@ Rails.application.routes.draw do
     resources :messages, only: :create
   end
 
-  resources :event do
+  resources :events do
     resources :reviews
   end
 
-  resources :questionnaire, only: [:new, :create, :destroy]
+  resources :questionnaires, only: [:new, :create, :destroy]
 
   resources :bookmarks, only: [:new, :index, :create, :destroy]
 end
