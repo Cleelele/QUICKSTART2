@@ -42,6 +42,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_07_100021) do
     t.string "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.string "name"
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.string "title"
+    t.bigint "bookmark_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bookmark_id"], name: "index_lists_on_bookmark_id"
+    t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -49,6 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_07_100021) do
     t.bigint "chatroom_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "content"
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
@@ -88,6 +102,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_07_100021) do
   add_foreign_key "bookmarks", "events"
   add_foreign_key "bookmarks", "users"
   add_foreign_key "chatrooms", "users"
+  add_foreign_key "lists", "bookmarks"
+  add_foreign_key "lists", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "personalities", "users"

@@ -4,5 +4,11 @@
 
 import { application } from "./application"
 
+import EventController from "./event_controller"
+application.register("event", EventController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import MapController from "./map_controller"
+application.register("map", MapController)
