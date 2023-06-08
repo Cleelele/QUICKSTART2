@@ -1,4 +1,4 @@
-class EventPolicy < ApplicationPolicy
+class BookmarkPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
@@ -10,7 +10,11 @@ class EventPolicy < ApplicationPolicy
     return true
   end
 
-  def show?
+  def new?
+    return create?
+  end
+
+  def create?
     return true
   end
 end
