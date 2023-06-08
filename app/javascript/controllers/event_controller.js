@@ -7,11 +7,9 @@ export default class extends Controller {
   location = null
 
   connect() {
-    console.log("You are connected!");
-    this.getToken();
-    this.getLocation();
+    console.log("im connected!!")
+    this.getApiKey()
   }
-
   // get location & convert to lat and long
 
   getLocation() {
@@ -28,28 +26,54 @@ export default class extends Controller {
 
   // post req to get the token and update it
 
-  getAPIKey() {
+  getApiKey() {
     const url = 'https://test.api.amadeus.com/v1/security/oauth2/token';
     const formData = new URLSearchParams();
     formData.append('grant_type', 'client_credentials');
-    formData.append('client_id', '{client_id}');
-    formData.append('client_secret', '{client_secret}');
-    console.log("Hana")
+    formData.append('client_id', 'KjTFTCnz0UdgVQ5vnr4GLTqhm7maB4BU');
+    formData.append('client_secret', 'xO59KfcU9gmE50us');
+    console.log("im getting the token!")
     fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      body: formData
-  })
+      body: formData //body: body.toString()
+    })
     .then(response => response.json())
     .then(data => {
-      console.log(data);
+      this.token = data.access_token;
+      if (this.location) {
+        this.getRequest();
+      }
+      //console.log(this.token)
     })
     .catch(error => {
       console.error(error);
     });
+  }
+
+   // get request to receive activities from api
+
+   getRequest() {
+    if (!this.token || !this.location) {
+      return;
     }
+    console.log("im already on the api request")
+    console.log(this.location)
+    const { lat, lon } = this.location;
+    const url = `https://test.api.amadeus.com/v1/reference-data/locations/pois?latitude=${lat}&longitude=${lon}`;
+    fetch(url, {
+      method: 'GET',
+      headers: {
+        "Authorization": `Bearer ${this.token}`,
+      }
+    })
+    .then(response => response.json())
+    .then((data) => {
+      console.log(data)
+    })
+   }
   }
 
 
