@@ -1,3 +1,14 @@
+
+<div data-controller = "search">
+  <% form_with url: events_path, data: { action = "submit->search#submit" } do |f| %>
+  <% f.text_field :query, data: { target: "search.input" } %>
+  <% f.submit "Submit" %>
+<% end %>
+
+  <ul data-search-target="list">
+  </ul>
+</div>
+
 <div class = "event">
   <% @events.each do |x| %>
     <p id="name"><%= x.name %>
