@@ -11,4 +11,5 @@ class User < ApplicationRecord
   validates :presonality_type, presence: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         has_one :personality
 end

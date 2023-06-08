@@ -1,4 +1,4 @@
-class QuestionnairePolicy < ApplicationPolicy
+class PersonalityPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     # def resolve
@@ -6,11 +6,11 @@ class QuestionnairePolicy < ApplicationPolicy
     # end
   end
 
-  def new?
-    return create?
+  def create?
+    true
   end
 
-  def create?
-    return true
+  def new?
+    create?
   end
 end
