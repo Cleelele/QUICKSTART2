@@ -10,9 +10,10 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :reviews
+    resources :bookmarks, only: [:create]
   end
 
   resources :questionnaires, only: [:new, :create, :destroy]
 
-  resources :bookmarks, only: [:new, :index, :create, :destroy]
+  resources :bookmarks, only: [ :index, :destroy]
 end
