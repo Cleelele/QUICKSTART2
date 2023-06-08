@@ -1,11 +1,11 @@
 <div class = "event">
   <h1>Bookmarks</h1>
   <% @bookmarks.each do |x| %>
-    <div class = content, style = "display:flex">
-    <p>Event info:<%= x.event_id %></p>
-      <%= link_to bookmark_path(x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
+     <div class = content, style = "display:flex">
+        <p>Event info:<%= x.event_id %></p>
+       <%= link_to bookmark_path(x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
         <i class="fa-solid fa-trash"></i>
       <% end %>
-    </div>
-  <% end %>
+      </div>
+   <% end %>
 </div>

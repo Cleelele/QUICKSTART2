@@ -19,6 +19,7 @@ class BookmarksController < ApplicationController
 
   def index
     @bookmarks = policy_scope(Bookmark)
+    @user = current_user
   end
 
   def destroy
