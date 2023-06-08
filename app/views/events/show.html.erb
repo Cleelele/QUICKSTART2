@@ -2,3 +2,23 @@
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+<%= link_to "Write a Review", new_event_review_path(@event), class:"event" %>
+<br>
+<div class = "event">
+  <h3>Reviews</h3>
+  <div class = "event" style = "display:flex">
+    <% @event.reviews.each do |x| %>
+      <%= x.rating %>
+      <%= x.comment %>
+      <p>By: author</p>
+      <%= link_to edit_event_review_path(x) do%>
+        <i class="fa-solid fa-pen-to-square"></i>
+      <% end %>
+      <%= link_to event_review_path(x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
+        <i class="fa-solid fa-trash"></i>
+      <% end %>
+      <br>
+    <% end %>
+  </div>
+</div>
