@@ -18,9 +18,11 @@ User.destroy_all
 puts "creating user"
 guest = User.create!(email: "guest@gmail.com", password: "123456")
 
+Personality.create!(user_id: guest.id)
+
 puts "users created...creating chatroom"
 Chatroom.create!(name: "Forum", user_id: guest.id)
-# fix this user_id
+
 
 puts "chatroom created...creating events"
 Event.create!(name: "Brunch in the Park Madrid", image: "https://www.neo2.com/wp-content/uploads/2019/07/brunch-in-the-park-madrid-barcelona.jpg", category: "party", openings: "12pm - 12am", address: "Parque Enrique Tierno Galvan, 28045 Madrid, Spain", description: "Best day-party", price: 20, tips: "Sunset is prime time", link: "https://madrid.brunch-in.com")
