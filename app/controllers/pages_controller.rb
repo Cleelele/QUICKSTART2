@@ -6,7 +6,7 @@ class PagesController < ApplicationController
       if current_user.personality.nil?
         redirect_to new_personality_path
       else
-        redirect_to root_path
+        redirect_to events_path
       end
     end
   end
