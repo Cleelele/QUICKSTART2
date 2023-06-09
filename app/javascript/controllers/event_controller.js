@@ -61,6 +61,7 @@ export default class extends Controller {
 
   getUserPersonalityType() {
     return this.inputTarget.dataset.personalityType;
+    console.log(this.inputTarget.dataset.personalityType)
   }
 
    // get request to receive activities from api
@@ -85,7 +86,8 @@ export default class extends Controller {
       console.log("activities fetched!!!!")
       console.log(data)
 
-      const personalityType = this.getUserPersonalityType();
+      const personalityType = this.inputTarget.getAttribute('data-personality-type');
+      console.log("personality typeee")
       console.log(this.personalityType)
       const matchingTags = getMatchingTagsForPersonalityType(personalityType);
 

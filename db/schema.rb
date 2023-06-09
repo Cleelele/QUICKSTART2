@@ -76,15 +76,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_07_104410) do
     t.index ["user_id"], name: "index_personalities_on_user_id"
   end
 
-  create_table "questionnaires", force: :cascade do |t|
-    t.string "questions"
-    t.string "results"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_questionnaires_on_user_id"
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.integer "rating"
     t.string "comment"
@@ -116,7 +107,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_07_104410) do
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "personalities", "users"
-  add_foreign_key "questionnaires", "users"
   add_foreign_key "reviews", "events"
   add_foreign_key "reviews", "users"
 end
