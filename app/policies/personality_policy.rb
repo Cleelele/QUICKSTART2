@@ -13,4 +13,12 @@ class PersonalityPolicy < ApplicationPolicy
   def new?
     create?
   end
+
+  def edit?
+    update?
+  end
+
+  def update?
+    true
+  end
 end

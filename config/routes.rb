@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :lists, only: [:create]
 
-  resources :personalities, only: [:new, :create, :destroy]
+  resources :personalities, only: [:new, :create, :edit, :update]
 
   resources :bookmarks, only: [:index, :destroy]
 end
