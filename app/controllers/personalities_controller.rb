@@ -1,7 +1,8 @@
 class PersonalitiesController < ApplicationController
+  
   def new
     @personality = Personality.new
-    authorize(@personality)
+    authorize @personality
   end
 
   def create
@@ -15,6 +16,25 @@ class PersonalitiesController < ApplicationController
       redirect_to root_path
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+    @personality = Personality.find(params[:id])
+    authorize @personality
+  end
+
+  def update
+    @personality = Personality.find(params[:id])
+    authorize @personality
+    @user = current_user
+    @personality.user = current_user
+    #call set_type method pass @personality.answer
+    set_mood(@personality.answer)
+    if @personality.save
+      redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -52,21 +72,4 @@ class PersonalitiesController < ApplicationController
     params.require(:personality).permit(:answer)
   end
 
-  def edit
-    @personality = Personality.find(params[:id])
-    authorize(@personality)
-  end
-
-  def update
-    @personality = Personality.find(params[:id])
-    @personality.user = current_user
-    #call set_type method pass @personality.answer
-    set_mood(@personality.answer)
-    authorize @personality
-    if @personality.save
-      redirect_to root_path
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
 end
