@@ -52,16 +52,21 @@ class PersonalitiesController < ApplicationController
     params.require(:personality).permit(:answer)
   end
 
-  def index
-    @personality = Personality.all
+  def edit
+    @personality = Personality.find(params[:id])
+    authorize(@personality)
   end
 
-  def destroy
-    @personality.destroy
-
-    respond_to do |format|
-      format.html { redirect_to new_personality_path , notice: "Restart your questionnaire" }
-      format.json { head :no_content }
+  def update
+    @personality = Personality.find(params[:id])
+    @personality.user = current_user
+    #call set_type method pass @personality.answer
+    set_mood(@personality.answer)
+    authorize @personality
+    if @personality.save
+      redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 end
