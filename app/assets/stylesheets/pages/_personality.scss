@@ -1,5 +1,54 @@
 .personality {
-  color: white;
+  border-color: white;
+  text-align: center;
 
+  .personality-form {
+     margin: 0;
+     margin-right: 10px;
+     display: flex;
+     flex-direction: row;
+     align-items:baseline;
+     margin-bottom:15px;
+     text-align: center;
+     input {
+      margin: 0;
+      margin-right:10px
+     }
+  }
 
-} 
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: gold;
+  }
+
+  p {
+    margin-bottom: 10px;
+    color: white
+  }
+
+  label {
+
+    margin-bottom: 5px;
+    color: white ;
+  }
+
+  input {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #45a049;
+    }
+  }
+
+}

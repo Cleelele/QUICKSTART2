@@ -1,3 +1,4 @@
+
 <div data-controller="event">
   <%= form_with url: events_path, method: :get, data: { action: "submit->event#getLocation" } do |f| %>
     <%= f.text_field :query, data: { event_target: "input" } %>
@@ -12,6 +13,7 @@
   <% @events.each do |x| %>
     <p id="name"><%= x.name %>
     <%= link_to event_bookmarks_path(x, @bookmark), data: { turbo_method: :post } do %>
+
       <i class="fa-regular fa-bookmark"></i>
     <% end %>
     </p>
