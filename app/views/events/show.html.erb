@@ -1,4 +1,5 @@
-<div style="width: 100%; height: 600px;"
+<%= link_to "<-- Back", events_path, class: "event" %>
+<div style="width: 100%; height: 300px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
@@ -7,16 +8,18 @@
 <br>
 <div class = "event">
   <h3>Reviews</h3>
-  <div class = "event" style = "display:flex">
+  <div class = "event" style = "block-size: fit-content; width: fit-content">
     <% @event.reviews.each do |x| %>
-      <%= x.rating %>
+      <%= x.rating %>:
       <%= x.comment %>
-      <p>By: author</p>
-      <%= link_to edit_event_review_path(x) do%>
-        <i class="fa-solid fa-pen-to-square"></i>
-      <% end %>
-      <%= link_to event_review_path(x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
-        <i class="fa-solid fa-trash"></i>
+      <%= x.user.email %>
+      <% if x.user_id == @user.id %>
+        <%= link_to edit_event_review_path(x) do%>
+          <i class="fa-solid fa-pen-to-square"></i>
+        <% end %>
+        <%= link_to event_review_path(x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
+          <i class="fa-solid fa-trash"></i>
+        <% end %>
       <% end %>
       <br>
     <% end %>

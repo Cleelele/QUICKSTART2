@@ -1,10 +1,10 @@
 class PersonalityPolicy < ApplicationPolicy
-  class Scope < Scope
+  #class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     # def resolve
     #   scope.all
     # end
-  end
+  #end
 
   def create?
     true
@@ -12,5 +12,13 @@ class PersonalityPolicy < ApplicationPolicy
 
   def new?
     create?
+  end
+
+  def update?
+    true
+  end
+
+  def edit?
+    update?
   end
 end

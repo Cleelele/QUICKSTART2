@@ -7,19 +7,21 @@
 #   Character.create(name: "Luke", movie: movies.first)
 puts "Destroying everything"
 Bookmark.destroy_all
-Event.destroy_all
 List.destroy_all
 Message.destroy_all
 Chatroom.destroy_all
 Personality.destroy_all
 Review.destroy_all
+Event.destroy_all
 User.destroy_all
 
 puts "creating user"
-User.create!(email: "guest@gmail.com", password: "123456")
+guest = User.create!(email: "guest@gmail.com", password: "123456")
+
+Personality.create!(user_id: guest.id)
 
 puts "users created...creating chatroom"
-Chatroom.create!(name: "Forum", user_id: 21)
+Chatroom.create!(name: "Forum", user_id: guest.id)
 
 
 puts "chatroom created...creating events"

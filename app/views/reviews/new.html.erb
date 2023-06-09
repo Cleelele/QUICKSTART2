@@ -1,4 +1,4 @@
-  <h1>New review</h1>
+  <h1 class = "event">New review</h1>
   <%= simple_form_for [@event, @review] do |f| %>
     <%= f.input :rating, collection: 0..5%>
     <%= f.input :comment %>
