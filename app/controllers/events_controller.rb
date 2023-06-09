@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  include PersonalityHelper
+
   def new
   end
 
@@ -6,6 +8,9 @@ class EventsController < ApplicationController
   end
 
   def index
+    #personalityType = getUserPersonalityType
+    #matchingTags = getMatchingTagsForPersonalityType(personalityType)
+
     @events = policy_scope(Event)
     @bookmark = Bookmark.new
   end

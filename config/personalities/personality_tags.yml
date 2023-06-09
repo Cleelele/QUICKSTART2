@@ -1,0 +1,77 @@
+personality_types:
+  adventurous_explorer:
+    - travel
+    - adventure
+    - rockclimbing
+    - kayak
+    - safari
+    - train
+    - bus
+    - transport
+  culture_enthusiast:
+    - sightseeing
+    - museum
+    - landmark
+    - tourguide
+    - attraction
+    - art
+    - gallery
+    - architecture
+    - souvenir
+    - church
+    - temple
+    - historic
+    - sightseeing
+  food_connoisseur:
+    - tourguide
+    - restaurant
+    - foodtasting
+    - foodtour
+    - food
+    - market
+    - vegan
+    - vegetarian
+    - bar
+    - pub
+    - bakery
+    - traditional
+    - seafood
+    - breakfast
+    - brunch
+    - lunch
+    - dinner
+  nightlife_seeker:
+    - nightclub
+    - bar
+    - club
+    - live
+    - nightlife
+  wellness_and_fitness_enthusiast:
+    - fitness
+    - studio
+    - yoga
+    - wellness
+    - sport
+  arts_and_performance_lover:
+    - art
+    - theater
+    - concert
+    - music
+    - festival
+  family_friendly:
+    - park
+    - garden
+    - kids
+    - tour
+    - family
+    - parents
+  career_oriented_professional:
+    - career
+    - network
+    - job
+    - conference
+    - business
+  handicapped_person:
+    - handicapped
+    - accessibility
+    - elevator
