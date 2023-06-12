@@ -9,7 +9,7 @@
 <%= link_to "Write a Review", new_event_review_path(@event), class:"event" %>
 <br>
 <div class = "event">
-  <h3>Reviews</h3>
+  <h1>Reviews</h1>
   <div class = "event" style = "block-size: fit-content; width: fit-content">
     <% @event.reviews.each do |x| %>
       <%= x.rating %>:
