@@ -1,34 +1,53 @@
 import { Controller } from "@hotwired/stimulus"
-import { getUserPersonalityType, getMatchingTagsForPersonalityType } from "./personality"
-
+//import { getUserPersonalityType, getMatchingTagsForPersonalityType } from "../../../config/personalities/personality_tags.yml";
+import yaml from "js-yaml";
+//import fs from "fs";
 // Connects to data-controller="event"
 export default class extends Controller {
   static targets = ["input"]
   token = null
   location = null
+  matchingTags = [];
 
   connect() {
-    console.log("im connected!!")
     this.getApiKey()
+    this.loadMatchingTags();
   }
-  // get location & convert to lat and long
+
+  loadMatchingTags() {
+    fetch("/data/personality_tags.yml")
+      .then((response) => response.text())
+      .then((yamlData) => {
+        const parsedData = yaml.load(yamlData);
+        const personalityType = this.inputTarget.dataset.personalityType;
+        const formattedPersonalityType = personalityType.replace(/_/g, '').toLowerCase(); // Remove underscores and convert to lowercase
+        const matchingTags = Object.entries(parsedData.personality_types).reduce((tags, [key, value]) => {
+          const formattedKey = key.replace(/_/g, ' ').toLowerCase(); // Remove underscores and convert key to lowercase
+          if (formattedKey === formattedPersonalityType) {
+            return value;
+          }
+          return tags;
+        }, []);
+        this.matchingTags = matchingTags.map((tag) => tag.replace(/_/g, '')); // Remove underscores from matching tags
+      })
+      .catch((error) => {
+        console.error("Failed to load matching tags:", error);
+      });
+  }
+
 
   getLocation() {
     const location = this.inputTarget.value // assign attribute
     const urlAddress = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(location)}&format=json`
-    console.log("geocolating.......")
     fetch (urlAddress)
       .then(response => response.json())
       .then(data => {
         const { lat, lon } = data[0]
         this.location = { lat, lon }
-        console.log("i got the geolocation")
-        console.log(this.location)
         this.getRequest()
       })
   }
 
-  // post req to get the token and update it
 
   getApiKey() {
     const url = 'https://test.api.amadeus.com/v1/security/oauth2/token';
@@ -36,7 +55,6 @@ export default class extends Controller {
     formData.append('grant_type', 'client_credentials');
     formData.append('client_id', 'KjTFTCnz0UdgVQ5vnr4GLTqhm7maB4BU');
     formData.append('client_secret', 'xO59KfcU9gmE50us');
-    console.log("fetching api key")
     fetch(url, {
       method: 'POST',
       headers: {
@@ -47,34 +65,21 @@ export default class extends Controller {
     .then(response => response.json())
     .then(data => {
       this.token = data.access_token;
-      console.log("i got the api key")
-      console.log(this.token)
       if (this.location) {
         this.getRequest();
       }
-      //console.log(this.token)
     })
     .catch(error => {
       console.error(error);
     });
   }
 
-  getUserPersonalityType() {
-    return this.inputTarget.dataset.personalityType;
-    console.log(this.inputTarget.dataset.personalityType)
-  }
-
-   // get request to receive activities from api
-
    getRequest() {
     if (!this.token || !this.location) {
       return;
     }
-    //console.log("fetching activities!!")
-    //console.log(this.location)
     const { lat, lon } = this.location;
-    const url = `https://test.api.amadeus.com/v1/reference-data/locations/pois?latitude=41.397158&longitude=2.160873&radius=1`;
-
+    const url = `https://test.api.amadeus.com/v1/reference-data/locations/pois?latitude=${lat}&longitude=${lon}&radius=1`;
     fetch(url, {
       method: 'GET',
       headers: {
@@ -83,34 +88,43 @@ export default class extends Controller {
     })
     .then(response => response.json())
     .then((data) => {
-      console.log("activities fetched!!!!")
-      console.log(data)
-
-      const personalityType = this.inputTarget.getAttribute('data-personality-type');
-      console.log("personality typeee")
-      console.log(this.personalityType)
-      const matchingTags = getMatchingTagsForPersonalityType(personalityType);
-
+      console.log("dataaa", data)
       // Check if data is an array
       if (Array.isArray(data.data)) {
-        const filteredActivities = data.data.filter(activity => {
+        const filteredActivities = data.data.filter((activity) => {
           if (Array.isArray(activity.tags)) {
-            return activity.tags.some(tag => matchingTags.includes(tag));
+            return activity.tags.some((tag) => this.matchingTags.includes(tag));
           } else {
-            return false; // Skip activities without tags
+            return false;
           }
         });
-
-    console.log("filtered activities:");
-    console.log(filteredActivities);
-
-  } else {
-    console.error("Invalid data format. Expected an array.");
-  }
-
-    // Use the filtered activities as needed in your application
+        filteredActivities.forEach((activity) => {
+          console.log(activity.name)
+        })
+      } else {
+        console.error("Invalid data format. Expected an array.");
+      }
     });
   }
+
+  getDetailRequest() {
+    if (!this.token || !this.location) {
+      return;
+    }
+    const { lat, lon } = this.location;
+    const url = `https://test.api.amadeus.com/v1/shopping/activities?latitude=${lat}&longitude=${lon}&radius=1`;
+    fetch(url, {
+      method: 'GET',
+      headers: {
+        "Authorization": `Bearer ${this.token}`,
+      },
+    })
+    .then(response => response.json())
+    .then((data) => {
+      console.log("dataaa detail", data)
+    });
+  }
+
 }
 
 
