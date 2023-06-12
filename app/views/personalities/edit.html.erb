@@ -1,3 +1,6 @@
+<%= link_to events_path, class: "event", style: "block-size: fit-content; width: fit-content" do%>
+  <i class="fa-sharp fa-solid fa-left-long"></i>
+<% end %>
 <div class="event">
   <h1>Questionnaire</h1>
 
@@ -8,7 +11,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <p><strong>1. How would you describe your ideal weekend?</strong></p>
     <div class="personality-form">
-     <%=  f.label :answer, "Exciting Adventurous activities and outdoors fun (1)" %>
+     <%=  f.label :answer, "Exciting adventurous activities and outdoors fun (1)" %>
       <%= f.radio_button :answer, "Adventurous outdoor activities(1)" %>
     </div>
     <div class="personality-form">

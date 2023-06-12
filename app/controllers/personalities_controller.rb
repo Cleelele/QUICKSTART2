@@ -1,5 +1,5 @@
 class PersonalitiesController < ApplicationController
-  
+
   def new
     @personality = Personality.new
     authorize @personality
@@ -12,7 +12,7 @@ class PersonalitiesController < ApplicationController
     #call set_type method pass @personality.answer
     set_mood(@personality.answer)
     authorize @personality
-    if @personality.save
+    if @personality.save!
       redirect_to root_path
     else
       render :new, status: :unprocessable_entity
@@ -31,7 +31,7 @@ class PersonalitiesController < ApplicationController
     @personality.user = current_user
     #call set_type method pass @personality.answer
     set_mood(@personality.answer)
-    if @personality.save
+    if @personality.update!(personality_params)
       redirect_to root_path
     else
       render :edit, status: :unprocessable_entity
