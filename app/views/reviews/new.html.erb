@@ -1,6 +1,8 @@
-  <h1 class = "event">New review</h1>
-  <%= simple_form_for [@event, @review] do |f| %>
-    <%= f.input :rating, collection: 0..5%>
-    <%= f.input :comment %>
-    <%= f.submit %>
-  <% end %>
+<h1 class = "event">New review</h1>
+<div class = "event">
+    <%= simple_form_for [@event, @review] do |f| %>
+      <%= f.input :rating, collection: 0..5%>
+      <%= f.input :comment %>
+          <%= f.submit "Submit", class: "btn" %>
+    <% end %>
+</div>
