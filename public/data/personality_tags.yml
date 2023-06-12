@@ -8,7 +8,8 @@ personality_types:
     - train
     - bus
     - transport
-  culture_enthusiast:
+    - hiking
+  culture_enthusiasts:
     - sightseeing
     - museum
     - landmark
@@ -21,7 +22,10 @@ personality_types:
     - church
     - temple
     - historic
-    - sightseeing
+    - sights
+    - historic
+    - historicplace
+    - attraction
   food_connoisseur:
     - tourguide
     - restaurant
@@ -40,18 +44,23 @@ personality_types:
     - brunch
     - lunch
     - dinner
+    - liquor
+    - tapas
+    - grills
   nightlife_seeker:
     - nightclub
     - bar
     - club
     - live
     - nightlife
+    - night
   wellness_and_fitness_enthusiast:
     - fitness
     - studio
     - yoga
     - wellness
     - sport
+    - beauty&spas
   arts_and_performance_lover:
     - art
     - theater
@@ -65,13 +74,21 @@ personality_types:
     - tour
     - family
     - parents
+    - zoo
+    - fairground
+    - aquarium
   career_oriented_professional:
     - career
     - network
     - job
     - conference
     - business
+    - fair
   handicapped_person:
     - handicapped
     - accessibility
     - elevator
+    - wheelchair
+    - blind
+    - deaf
+    - audioguide

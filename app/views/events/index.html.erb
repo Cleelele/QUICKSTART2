@@ -1,6 +1,7 @@
 <div data-controller="event">
   <%= form_with url: events_path, method: :get, data: { action: "submit->event#getLocation" } do |f| %>
-    <%= f.text_field :query, data: { event_target: "input" } %>
+
+    <%= f.text_field :query, data: { event_target: "input", personality_type: current_user.personality.mood } %>
     <%= f.submit "Submit", class: "btn" %>
   <% end %>
 
@@ -16,4 +17,10 @@
     <% end %>
     </p>
   <% end %>
+</div>
+
+<div class="event">
+  <div id="activity-list">
+    <ul id="activity-cards"></ul>
+  </div>
 </div>
