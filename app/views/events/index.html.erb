@@ -1,4 +1,3 @@
-
 <div data-controller="event">
   <%= form_with url: events_path, method: :get, data: { action: "submit->event#getLocation" } do |f| %>
     <%= f.text_field :query, data: { event_target: "input" } %>
