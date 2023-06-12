@@ -1,16 +1,15 @@
-import { Controller } from "@hotwired/stimulus"
-//import { getUserPersonalityType, getMatchingTagsForPersonalityType } from "../../../config/personalities/personality_tags.yml";
+import { Controller } from "@hotwired/stimulus";
 import yaml from "js-yaml";
-//import fs from "fs";
-// Connects to data-controller="event"
+
 export default class extends Controller {
-  static targets = ["input"]
-  token = null
-  location = null
+  static targets = ["input"];
+  token = null;
+  location = null;
   matchingTags = [];
+  filteredActivities = [];
 
   connect() {
-    this.getApiKey()
+    this.getApiKey();
     this.loadMatchingTags();
   }
 
@@ -20,34 +19,33 @@ export default class extends Controller {
       .then((yamlData) => {
         const parsedData = yaml.load(yamlData);
         const personalityType = this.inputTarget.dataset.personalityType;
-        const formattedPersonalityType = personalityType.replace(/_/g, '').toLowerCase(); // Remove underscores and convert to lowercase
+        const formattedPersonalityType = personalityType.replace(/_/g, '').toLowerCase();
         const matchingTags = Object.entries(parsedData.personality_types).reduce((tags, [key, value]) => {
-          const formattedKey = key.replace(/_/g, ' ').toLowerCase(); // Remove underscores and convert key to lowercase
+          const formattedKey = key.replace(/_/g, ' ').toLowerCase();
           if (formattedKey === formattedPersonalityType) {
             return value;
           }
           return tags;
         }, []);
-        this.matchingTags = matchingTags.map((tag) => tag.replace(/_/g, '')); // Remove underscores from matching tags
+        this.matchingTags = matchingTags.map((tag) => tag.replace(/_/g, ''));
       })
       .catch((error) => {
         console.error("Failed to load matching tags:", error);
       });
   }
 
-
   getLocation() {
-    const location = this.inputTarget.value // assign attribute
-    const urlAddress = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(location)}&format=json`
-    fetch (urlAddress)
+    const location = this.inputTarget.value;
+    const urlAddress = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(location)}&format=json`;
+    fetch(urlAddress)
       .then(response => response.json())
       .then(data => {
-        const { lat, lon } = data[0]
-        this.location = { lat, lon }
-        this.getRequest()
-      })
+        const { lat, lon } = data[0];
+        this.location = { lat, lon };
+        this.getRequest();
+        this.getDetailRequest();
+      });
   }
-
 
   getApiKey() {
     const url = 'https://test.api.amadeus.com/v1/security/oauth2/token';
@@ -60,21 +58,18 @@ export default class extends Controller {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      body: formData //body: body.toString()
+      body: formData
     })
     .then(response => response.json())
     .then(data => {
       this.token = data.access_token;
-      if (this.location) {
-        this.getRequest();
-      }
     })
     .catch(error => {
       console.error(error);
     });
   }
 
-   getRequest() {
+  getRequest() {
     if (!this.token || !this.location) {
       return;
     }
@@ -88,19 +83,16 @@ export default class extends Controller {
     })
     .then(response => response.json())
     .then((data) => {
-      console.log("dataaa", data)
-      // Check if data is an array
+      console.log("dataaa", data);
       if (Array.isArray(data.data)) {
-        const filteredActivities = data.data.filter((activity) => {
+        this.filteredActivities = data.data.filter((activity) => {
           if (Array.isArray(activity.tags)) {
             return activity.tags.some((tag) => this.matchingTags.includes(tag));
           } else {
             return false;
           }
         });
-        filteredActivities.forEach((activity) => {
-          console.log(activity.name)
-        })
+        console.log("Filtered Activities:", this.filteredActivities);
       } else {
         console.error("Invalid data format. Expected an array.");
       }
@@ -119,11 +111,63 @@ export default class extends Controller {
         "Authorization": `Bearer ${this.token}`,
       },
     })
-    .then(response => response.json())
-    .then((data) => {
-      console.log("dataaa detail", data)
-    });
+      .then(response => response.json())
+      .then((data) => {
+        console.log("dataaa detail", data);
+        if (Array.isArray(data.data)) {
+          const detailedActivities = data.data || [];
+          const matchingActivities = [];
+
+          this.filteredActivities.forEach((filteredActivity) => {
+            const filteredActivityName = filteredActivity.name.toLowerCase();
+
+            const activitiesMatchingName = detailedActivities.filter((detailedActivity) => {
+              const detailedActivityName = detailedActivity.name.toLowerCase();
+              const detailedActivityDescription = detailedActivity.description ? detailedActivity.description.toLowerCase() : '';
+
+              return (
+                detailedActivityName.includes(filteredActivityName) ||
+                detailedActivityDescription.includes(filteredActivityName)
+              );
+            });
+
+            if (activitiesMatchingName.length > 0) {
+              matchingActivities.push(...activitiesMatchingName);
+            }
+          });
+
+          // Find the UL element by its id
+          const ul = document.getElementById('activity-cards');
+
+          // Display information for the matching activities
+          matchingActivities.forEach((matchingActivity) => {
+            // create the cards for each matchingActivity and insert in html
+            // Example: Access the description, price, images, etc. from matchingActivity and display on your view
+          const card = document.createElement('div');
+          card.classList.add('activity-card');
+
+          // Add activity details to the card
+          const title = document.createElement('h3');
+          title.textContent = matchingActivity.name;
+          card.appendChild(title);
+
+          const description = document.createElement('p');
+          description.textContent = matchingActivity.description;
+          card.appendChild(description);
+
+          // Insert the card into your HTML element
+          ul.appendChild(card);
+
+          });
+        } else {
+          console.error("Invalid data format. Expected an array.");
+        }
+      });
   }
+
+
+
+
 
 }
 
