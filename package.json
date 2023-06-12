@@ -10,6 +10,7 @@
     "js-yaml": "^4.1.0",
     "mapbox-gl": "^2.15.0",
     "stimulus": "^3.2.1",
+    "typed.js": "^2.0.16",
     "webpack": "^5.85.1",
     "webpack-cli": "^5.1.3"
   },

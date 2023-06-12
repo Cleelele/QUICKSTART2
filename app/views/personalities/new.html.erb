@@ -1,4 +1,4 @@
-<div class="personality">
+<div class="event">
   <h1>Questionnaire</h1>
 
  <%= simple_form_for @personality do |f| %>
@@ -6,42 +6,42 @@
 
  <div>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <p><strong>What do you feel like doing?</strong></p>
+    <p style="text-decoration:underline"><strong>1. How would you describe your ideal weekend?</strong></p>
     <div class="personality-form">
-      <%= f.radio_button :answer, "Adventurous outdoor activities (1)" %>
-     <%=  f.label :answer, "Adventurous outdoor activities (1)" %>
+     <%=  f.label :answer, "Exciting adventurous activities and outdoors fun (1)" %>
+      <%= f.radio_button :answer, "Adventurous outdoor activities(1)" %>
     </div>
     <div class="personality-form">
-     <%= f.radio_button :answer, "Exploring museums and cultural sites (2)" %>
      <%= f.label :answer, "Exploring museums and cultural sites (2)" %><br>
+     <%= f.radio_button :answer, "Exploring museums and cultural sites (2)" %>
      </div>
     <div class="personality-form">
-     <%= f.radio_button :answer, "Trying new restaurants and cuisines (3)" %>
      <%= f.label :answer, "Trying new restaurants and cuisines (3)" %><br>
+     <%= f.radio_button :answer, "Trying new restaurants and cuisines (3)" %>
      </div>
     <div class="personality-form">
-     <%= f.radio_button :answer, "Enjoying the nightlife and live music (4)" %>
      <%= f.label :answer, "Enjoying the nightlife and live music (4)" %><br>
+     <%= f.radio_button :answer, "Enjoying the nightlife and live music (4)" %>
      </div>
     <div class="personality-form">
-     <%= f.radio_button :answer, "Engaging in wellness activities and fitness (5)" %>
      <%= f.label :answer, "Engaging in wellness activities and fitness (5)" %><br>
+     <%= f.radio_button :answer, "Engaging in wellness activities and fitness (5)" %>
      </div>
     <div class="personality-form">
-     <%= f.radio_button :answer, "Attending art exhibitions and performances (6)" %>
      <%= f.label :answer, "Attending art exhibitions and performances (6)" %><br>
+     <%= f.radio_button :answer, "Attending art exhibitions and performances (6)" %>
      </div>
     <div class="personality-form">
-     <%= f.radio_button :answer, "Spending quality time with family in kid-friendly locations (7)" %>
      <%= f.label :answer, "Spending quality time with family in kid-friendly locations (7)" %><br>
+     <%= f.radio_button :answer, "Spending quality time with family in kid-friendly locations (7)" %>
      </div>
     <div class="personality-form">
-     <%= f.radio_button :answer, "Bringing my professionalism one step further (8)" %>
      <%= f.label :answer, "Bringing my professionalism one step further (8)" %><br>
+     <%= f.radio_button :answer, "Bringing my professionalism one step further (8)" %>
      </div>
     <div class="personality-form">
-     <%= f.radio_button :answer, "Accessible and inclusive activities for people with disabilities (9)" %>
      <%= f.label :answer, "Accessible and inclusive activities for people with disabilities (9)" %><br>
+     <%= f.radio_button :answer, "Accessible and inclusive activities for people with disabilities (9)" %>
      </div>
     <%= f.button :submit, 'Submit' %>
   </div>

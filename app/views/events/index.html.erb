@@ -1,7 +1,8 @@
 <div data-controller="event">
   <%= form_with url: events_path, method: :get, data: { action: "submit->event#getLocation" } do |f| %>
+
     <%= f.text_field :query, data: { event_target: "input", personality_type: current_user.personality.mood } %>
-    <%= f.submit "Submit" %>
+    <%= f.submit "Submit", class: "btn" %>
   <% end %>
 
   <ul data-search-target="list">
@@ -10,9 +11,8 @@
 
 <div class="event">
   <% @events.each do |x| %>
-    <p id="name"><%= x.name %>
+    <p id="name"><%= link_to x.name, event_path(x) %>
     <%= link_to event_bookmarks_path(x, @bookmark), data: { turbo_method: :post } do %>
-
       <i class="fa-regular fa-bookmark"></i>
     <% end %>
     </p>

@@ -1,4 +1,6 @@
-<%= link_to "<-- Back", events_path, class: "event" %>
+<%= link_to events_path, class: "event", style: "block-size: fit-content; width: fit-content" do%>
+  <i class="fa-sharp fa-solid fa-left-long"></i>
+<% end %>
 <div style="width: 100%; height: 300px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
@@ -7,7 +9,7 @@
 <%= link_to "Write a Review", new_event_review_path(@event), class:"event" %>
 <br>
 <div class = "event">
-  <h3>Reviews</h3>
+  <h1>Reviews</h1>
   <div class = "event" style = "block-size: fit-content; width: fit-content">
     <% @event.reviews.each do |x| %>
       <%= x.rating %>:
