@@ -1,0 +1,26 @@
+.bottomnavbar {
+  background-color: #fff;
+  position: fixed;
+  width: 100vw;
+  bottom: 10px;
+  padding: 12px;
+  flex-wrap: inherit;
+  align-items: center;
+  display:inline;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.nav-carlos {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
