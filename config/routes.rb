@@ -7,9 +7,11 @@ Rails.application.routes.draw do
   end
 
   resources :events do
-    resources :reviews
+    resources :reviews, except: [:destroy, :index]
     resources :bookmarks, only: [:create]
   end
+
+  resources :reviews, only: [:destroy, :index]
 
   resources :lists, only: [:create]
 
