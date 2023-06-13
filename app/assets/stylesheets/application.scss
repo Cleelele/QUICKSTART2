@@ -17,7 +17,22 @@
 
 
 
-body {
+body{
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('background.jpg');
-  background-size: auto;
+  background-size:auto;
+}
+
+.bg-image {
+  /* The image used */
+  backdrop-filter: blur(5px);
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* Full height and width */
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
 }
