@@ -1,0 +1,32 @@
+<nav class="bottomnavbar">
+  <ul class="nav-carlos">
+      <% if user_signed_in? %>
+       <li class="nav-item active">
+         <%= link_to events_path, class: "nav-link" do %>
+         <i class="fas fa-home"></i>
+       <% end %>
+      </li>
+
+        <li class="nav-item">
+          <%= link_to bookmarks_path, class: "nav-link" do%>
+          <i class="fa-solid fa-bookmark"></i>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to reviews_path, class: "nav-link" do%>
+          <i class="fa-regular fa-star"></i>
+           <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to edit_personality_path(Personality.last), class: "nav-link" do%>
+         <i class="fa-solid fa-clipboard-question"></i>
+          <% end %>
+        </li>
+         <li class="nav-item">
+          <%= link_to chatroom_path(Chatroom.last), class: "nav-link" do %>
+         <i class="fa-regular fa-comment"></i>
+           <% end %>
+        </li>
+        <% end %>
+  </ul>
+</nav>
