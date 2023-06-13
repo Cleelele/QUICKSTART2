@@ -31,7 +31,7 @@ class PersonalitiesController < ApplicationController
     @personality.user = current_user
     #call set_type method pass @personality.answer
     set_mood(@personality.answer)
-    if @personality.update!(personality_params)
+    if @personality.update(personality_params)
       redirect_to root_path
     else
       render :edit, status: :unprocessable_entity

@@ -13,6 +13,7 @@ class EventsController < ApplicationController
 
     @events = policy_scope(Event)
     @bookmark = Bookmark.new
+    @user = current_user
   end
 
   def show
