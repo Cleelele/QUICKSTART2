@@ -5,10 +5,14 @@
     <% end %>
 
 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-  <% if (User.last).photo.key.nil? || current_user == nil %>
-    <%= image_tag "https://d32ogoqmya1dw8.cloudfront.net/images/serc/empty_user_icon_256.v2.png", alt: "profile", class: "avatar" %>
+  <% if current_user %>
+      <% if current_user.photo.key %>
+        <%= cl_image_tag current_user.photo.key, class: "avatar", crop: :fill %>
+      <% else %>
+        <%= image_tag "https://d32ogoqmya1dw8.cloudfront.net/images/serc/empty_user_icon_256.v2.png", alt: "profile", class: "avatar" %>
+      <% end %>
   <% else %>
-    <%= cl_image_tag (User.last).photo.key, class: "avatar", crop: :fill %>
+        <%= image_tag "https://d32ogoqmya1dw8.cloudfront.net/images/serc/empty_user_icon_256.v2.png", alt: "profile", class: "avatar" %>
   <% end %>
 </button>
 
@@ -22,6 +26,9 @@
               <% end %>
               <%= link_to profile_path, class: "dropdown-item" do%>
               <i class="fa-solid fa-user"></i> Profile
+              <% end %>
+              <%= link_to about_path, class: "dropdown-item" do%>
+              <i class="fa-solid fa-house"></i> About
               <% end %>
               <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item logout" do%>
               <i class="fa-solid fa-right-from-bracket"></i> Log out
@@ -37,4 +44,3 @@
     </div>
   </div>
 </div>
-

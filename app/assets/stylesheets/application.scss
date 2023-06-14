@@ -25,17 +25,17 @@ body{
   background-size:auto;
 }
 
-.bg-image {
+//.bg-image {
   /* The image used */
-  backdrop-filter: blur(5px);
+  //backdrop-filter: blur(5px);
 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  //background-size: cover;
+  //background-position: center;
+  //background-repeat: no-repeat;
 
   /* Full height and width */
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-  z-index: 1;
-}
+  //width: 100vw;
+  //height: calc(100vh - 50px);
+  //position: relative;
+  //z-index: 1;
+//}
