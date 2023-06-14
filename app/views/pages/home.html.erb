@@ -1,30 +1,41 @@
 <div class="bg-home">
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class = "landing" style="background-color: white; border-radius: 50%; margin: auto; height: 400px; text-align:center;">
-  <br>
-  <%= image_tag "quickstart_logo.png", class: "logo" %>
-  <br>
-  <br>
-  <br>
-    <h1 data-controller="typed" style="height: 70px;"></h1>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <%= link_to "Continue", new_user_session_path, class: "btn" %>
-</div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<p style="background-color: white">*Currently available in: Barcelona, London, Berlin, Bangalore, Dallas, New York, Paris, & San Francisco<p>
+  <div class="backgroundhome">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="landing" style="border-radius: 50%; margin: auto; height: 400px; text-align:center;">
+      <br>
+
+      <%= image_tag "logofinal.png", class: "logohome" %>
+      <%= link_to new_user_session_path, class: "btn", style: "background:none" do%>
+      <%= image_tag "logocropped2.png", class: "logohome2 animate__animated animate__infinite animate__pulse animate__delay-1s", style: "border-radius: 5px; box-shadow: 0 0 0 10px rgba(221, 195, 107, 0.6); background-clip: padding-box;" %>
+
+
+      <% end %>
+
+
+      <br>
+      <br>
+      <br>
+      <h1 data-controller="typed" style="height: 70px;"></h1>
+      <br>
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+        <br>
+    <br>
+    <br>
+    <br>
+   <div class="explanation">
+    <p style="color: white; padding-left:10px; padding-right: 10px, text-align:center; font-size: 15px">*Currently available in: Barcelona, London, Berlin, Bangalore, Dallas, New York, Paris, & San Francisco</p>
+    </div>
+    <br>
+    <br>
   </div>
+</div>

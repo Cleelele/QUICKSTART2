@@ -1,6 +1,8 @@
 .logo{
   width: 100px;
+  //height: 50px;
   height:max-content;
+  background-color: none !important;
 }
 .container-fluid{
   display: flex;
@@ -14,4 +16,8 @@
 .navbarrange {
   display: flex;
   justify-content: space-between;
+}
+
+.avatar {
+  size: smaller;
 }
