@@ -3,14 +3,11 @@
   height:max-content;
 }
 .container-fluid{
-  background-color: darkgoldenrod;
   display: flex;
   justify-content: space-between;
-}
-.navbarrange{
-  display: flex;
-  justify-content: space-between;
+  background:white;
 }
 .logout{
   color:red
 }
+

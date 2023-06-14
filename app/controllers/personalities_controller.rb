@@ -30,7 +30,7 @@ class PersonalitiesController < ApplicationController
     @user = current_user
     @personality.user = current_user
     #call set_type method pass @personality.answer
-    set_mood(@personality.answer)
+    @personality.mood = set_mood(@personality.answer)
     if @personality.update!(personality_params)
       redirect_to root_path
     else

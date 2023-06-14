@@ -19,7 +19,7 @@
         <%= link_to edit_event_review_path(x) do%>
           <i class="fa-solid fa-pen-to-square"></i>
         <% end %>
-        <%= link_to event_review_path(x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
+        <%= link_to review_path(x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
           <i class="fa-solid fa-trash"></i>
         <% end %>
       <% end %>

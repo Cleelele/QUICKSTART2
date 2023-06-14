@@ -2,14 +2,16 @@
   <i class="fa-sharp fa-solid fa-left-long"></i>
 <% end %>
 <div class="event">
-  <h1>Questionnaire</h1>
 
  <%= simple_form_for @personality do |f| %>
  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
  <div>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <p style="text-decoration:underline"><strong>1. How would you describe your ideal weekend?</strong></p>
+    <div class="rainbow-text" style="text-align: center;">
+	    <span class="block-line"><span><span style="color:#ff0000;">W</span><span style="color:#ff6600;">h</span><span style="color:#ffcc00;">a</span><span style="color:#ccff00;">t</span><span style="color:#66ff00;">'</span><span style="color:#00ff00;">s&nbsp;</span></span><span><span style="color:#00ff66;">y</span><span style="color:#00ffcc;">o</span><span style="color:#00ccff;">u</span><span style="color:#0066ff;">r&nbsp;</span></span><span><span style="color:#0000ff;">m</span><span style="color:#6600ff;">o</span><span style="color:#cc00ff;">o</span><span style="color:#ff00cc;">d</span><span style="color:#ff0066;">?</span></span></span>
+    </div>
+    <p style= "text-align:center">🧜‍♂️🧑‍🎨🍤💃💪🧑‍🎨👨‍👩‍👧‍👦👨‍💼👨‍🦽</p>
     <div class="personality-form">
      <%=  f.label :answer, "Exciting adventurous activities and outdoors fun (1)" %>
       <%= f.radio_button :answer, "Adventurous outdoor activities(1)" %>

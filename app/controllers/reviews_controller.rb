@@ -19,7 +19,6 @@ class ReviewsController < ApplicationController
 
   def index
     @user = current_user
-    @reviews = Review.all
     @reviews = policy_scope(Review)
   end
 
@@ -46,10 +45,9 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @review = Review.find(params[:event_id])
-    @event = Event.find(params[:id])
+    @review = Review.find(params[:id])
     @review.destroy
-    redirect_to event_path(@event), status: :see_other
+    redirect_to event_path(@review.event), status: :see_other
     authorize(@review)
   end
 
@@ -60,6 +58,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:rating, :comment, :user_id)
+    params.require(:review).permit(:rating, :comment, :user_id, :event_id)
   end
 end
