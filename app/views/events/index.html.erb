@@ -1,26 +1,35 @@
-<div data-controller="event">
-  <%= form_with url: events_path, method: :get, data: { action: "submit->event#getLocation" } do |f| %>
+<div class="eventpage bg-image">
+  <div class="eventsheader">
+    <h6>Explore a city</h6>
+  </div>
 
-    <%= f.text_field :query, data: { event_target: "input", personality_type: current_user.personality.mood } %>
-    <%= f.submit "Submit", class: "btn" %>
-  <% end %>
+  <div data-controller="event">
+    <%= form_with url: events_path, method: :get, data: { action: "submit->event#getLocation" } do |f| %>
 
-  <ul data-search-target="list">
-  </ul>
-</div>
-
-<div class="event">
-  <% @events.each do |x| %>
-    <p id="name"><%= link_to x.name, event_path(x) %>
-    <%= link_to event_bookmarks_path(x, @bookmark), data: { turbo_method: :post } do %>
-      <i class="fa-regular fa-bookmark"></i>
+      <%= f.text_field :query, data: { event_target: "input", personality_type: current_user.personality.mood }, class: "inputfield" %>
+      <%= f.submit "Search", class: "searchbtn" %>
     <% end %>
-    </p>
-  <% end %>
-</div>
 
-<div class="event">
-  <div id="activity-list">
-    <ul id="activity-cards"></ul>
+    <ul data-search-target="list">
+    </ul>
+  </div>
+
+  <!--<div class="event">
+    <% @events.each do |x| %>
+      <p id="name"><%= link_to x.name, event_path(x) %>
+      <%= link_to event_bookmarks_path(x, @bookmark), data: { turbo_method: :post } do %>
+        <i class="fa-regular fa-bookmark"></i>
+      <% end %>
+      </p>
+    <% end %>
+  </div>-->
+
+
+    <!--<div id="activity-list">-->
+    <div class="event2">
+
+      <ul id="activity-cards"></ul>
+
+    </div>
   </div>
 </div>

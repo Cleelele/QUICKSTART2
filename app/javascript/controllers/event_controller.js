@@ -83,7 +83,6 @@ export default class extends Controller {
     })
     .then(response => response.json())
     .then((data) => {
-      console.log("dataaa", data);
       if (Array.isArray(data.data)) {
         this.filteredActivities = data.data.filter((activity) => {
           if (Array.isArray(activity.tags)) {
@@ -113,7 +112,6 @@ export default class extends Controller {
     })
       .then(response => response.json())
       .then((data) => {
-        console.log("dataaa detail", data);
         if (Array.isArray(data.data)) {
           const detailedActivities = data.data || [];
           const matchingActivities = [];
@@ -139,6 +137,10 @@ export default class extends Controller {
           // Find the UL element by its id
           const ul = document.getElementById('activity-cards');
 
+            // Remove any existing activities
+          ul.innerHTML = '';
+
+          console.log("matching activities!!!", matchingActivities)
           // Display information for the matching activities
           matchingActivities.forEach((matchingActivity) => {
             // create the cards for each matchingActivity and insert in html
@@ -147,13 +149,32 @@ export default class extends Controller {
           card.classList.add('activity-card');
 
           // Add activity details to the card
-          const title = document.createElement('h3');
+
+
+          const img = document.createElement("img");
+          if(matchingActivity.pictures.length === 0) {
+            img.src = "https://res.cloudinary.com/divn1ky6d/image/upload/v1686668590/quickstart_logo_sati1q.png"
+          }else{
+            img.src = matchingActivity.pictures[0];
+          }
+          card.appendChild(img);
+
+          const title = document.createElement('h5');
           title.textContent = matchingActivity.name;
           card.appendChild(title);
 
-          const description = document.createElement('p');
-          description.textContent = matchingActivity.description;
-          card.appendChild(description);
+          //const description = document.createElement('p');
+          //description.textContent = matchingActivity.description;
+          //card.appendChild(description);
+
+          const price = document.createElement('h6');
+          if (matchingActivity.price.empty?) {
+            price.textContent = "TBA"
+          }else{
+            price.textContent = `${matchingActivity.price.amount}0€`;
+          }
+        card.appendChild(price);
+
 
           // Insert the card into your HTML element
           ul.appendChild(card);
