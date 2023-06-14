@@ -15,4 +15,7 @@ class PagesController < ApplicationController
     @user = current_user
   end
 
+  def about
+  end
+
 end

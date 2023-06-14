@@ -11,6 +11,8 @@ export default class extends Controller {
   connect() {
     this.getApiKey();
     this.loadMatchingTags();
+    console.log("connected!!!")
+    console.log("matching tags", this.matchingTags)
   }
 
   loadMatchingTags() {
@@ -51,8 +53,8 @@ export default class extends Controller {
     const url = 'https://test.api.amadeus.com/v1/security/oauth2/token';
     const formData = new URLSearchParams();
     formData.append('grant_type', 'client_credentials');
-    formData.append('client_id', 'KjTFTCnz0UdgVQ5vnr4GLTqhm7maB4BU');
-    formData.append('client_secret', 'xO59KfcU9gmE50us');
+    formData.append('client_id', 'LOVIapW5AiUe9FDa9Og7M0dwQYl5AFxn');
+    formData.append('client_secret', '0cLA54CvueM5RiON');
     fetch(url, {
       method: 'POST',
       headers: {
@@ -83,6 +85,7 @@ export default class extends Controller {
     })
     .then(response => response.json())
     .then((data) => {
+      console.log("unfiltered activities>>", data)
       if (Array.isArray(data.data)) {
         this.filteredActivities = data.data.filter((activity) => {
           if (Array.isArray(activity.tags)) {
@@ -91,7 +94,7 @@ export default class extends Controller {
             return false;
           }
         });
-        console.log("Filtered Activities:", this.filteredActivities);
+        console.log("Filtered Activities>>>", this.filteredActivities);
       } else {
         console.error("Invalid data format. Expected an array.");
       }
@@ -112,6 +115,7 @@ export default class extends Controller {
     })
       .then(response => response.json())
       .then((data) => {
+        console.log("detailed data>>", data)
         if (Array.isArray(data.data)) {
           const detailedActivities = data.data || [];
           const matchingActivities = [];
@@ -124,8 +128,7 @@ export default class extends Controller {
               const detailedActivityDescription = detailedActivity.description ? detailedActivity.description.toLowerCase() : '';
 
               return (
-                detailedActivityName.includes(filteredActivityName) ||
-                detailedActivityDescription.includes(filteredActivityName)
+                detailedActivityName.includes(filteredActivityName) || detailedActivityDescription.includes(filteredActivityName)
               );
             });
 
@@ -140,44 +143,44 @@ export default class extends Controller {
             // Remove any existing activities
           ul.innerHTML = '';
 
-          console.log("matching activities!!!", matchingActivities)
+          console.log("matching activities 1>>", matchingActivities)
           // Display information for the matching activities
           matchingActivities.forEach((matchingActivity) => {
             // create the cards for each matchingActivity and insert in html
             // Example: Access the description, price, images, etc. from matchingActivity and display on your view
-          const card = document.createElement('div');
-          card.classList.add('activity-card');
+            const card = document.createElement('div');
+            card.classList.add('activity-card');
 
-          // Add activity details to the card
-
-
-          const img = document.createElement("img");
-          if(matchingActivity.pictures.length === 0) {
-            img.src = "https://res.cloudinary.com/divn1ky6d/image/upload/v1686668590/quickstart_logo_sati1q.png"
-          }else{
-            img.src = matchingActivity.pictures[0];
-          }
-          card.appendChild(img);
-
-          const title = document.createElement('h5');
-          title.textContent = matchingActivity.name;
-          card.appendChild(title);
-
-          //const description = document.createElement('p');
-          //description.textContent = matchingActivity.description;
-          //card.appendChild(description);
-
-          const price = document.createElement('h6');
-          if (matchingActivity.price.empty?) {
-            price.textContent = "TBA"
-          }else{
-            price.textContent = `${matchingActivity.price.amount}0€`;
-          }
-        card.appendChild(price);
+            // Add activity details to the card
 
 
-          // Insert the card into your HTML element
-          ul.appendChild(card);
+            const img = document.createElement("img");
+            if(matchingActivity.pictures.length === 0) {
+              img.src = "https://res.cloudinary.com/divn1ky6d/image/upload/v1686668590/quickstart_logo_sati1q.png"
+            }else{
+              img.src = matchingActivity.pictures[0];
+            }
+            card.appendChild(img);
+
+            const title = document.createElement('h5');
+            title.textContent = matchingActivity.name;
+            card.appendChild(title);
+
+            //const description = document.createElement('p');
+            //description.textContent = matchingActivity.description;
+            //card.appendChild(description);
+
+            //const price = document.createElement('h6');
+            //if (matchingActivity.price.empty?) {
+              //price.textContent = "TBA"
+            //}else{
+              //price.textContent = `${matchingActivity.price.amount}0€`;
+            //}
+            //card.appendChild(price);
+
+
+            // Insert the card into your HTML element
+            ul.appendChild(card);
 
           });
         } else {
