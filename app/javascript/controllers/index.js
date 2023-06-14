@@ -4,6 +4,12 @@
 
 import { application } from "./application"
 
+import StarRatingController from "./star_rating_controller"
+application.register("star-rating", StarRatingController)
+
+import TypedController from "./typed_controller"
+application.register("typed", TypedController)
+
 import EventController from "./event_controller"
 application.register("event", EventController)
 
@@ -12,6 +18,3 @@ application.register("hello", HelloController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)
-
-import TypedController from "./typed_controller"
-application.register("typed", TypedController)
