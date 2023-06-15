@@ -18,7 +18,7 @@
     <% @events.each do |x| %>
       <p id="name"><%= link_to x.name, event_path(x) %>
       <%= link_to event_bookmarks_path(x, @bookmark), data: { turbo_method: :post } do %>
-        <i class="fa-regular fa-bookmark"></i>
+        <i class="fa-solid fa-bookmark"></i>
       <% end %>
       </p>
     <% end %>

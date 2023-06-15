@@ -1,4 +1,25 @@
+<%= link_to events_path, class: "btn", style: "block-size: fit-content; width: fit-content" do%>
+  <i class="fa-sharp fa-solid fa-left-long"></i>
+<% end %>
+<div class = "actions">
+  <div class="btn actions">
+    <%= link_to event_bookmarks_path(@event, @bookmark), data: { turbo_method: :post } do %>
+      <i class="fa-solid fa-bookmark"> Bookmark</i>
+    <% end %>
+  </div>
+  <div class="btn actions">
+    <%= link_to new_event_review_path(@event) do%>
+      <i class="fa-solid fa-star" ,> Write a review</i>
+    <% end %>
+  </div>
+</div>
+<br>
+<div style="width: 100%; height: 300px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 <div class="loginform", style="padding: 10px">
+
 <br>
 
   <%= link_to events_path, class: "event55", style: "block-size: fit-content; width: fit-content" do%>
