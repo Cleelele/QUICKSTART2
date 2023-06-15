@@ -11,8 +11,9 @@
       <%= f.text_field :query, data: { event_target: "input", personality_type: current_user.personality.mood }, class: "inputfield" %>
       <%= f.submit "Search", class: "searchbtn", data: {event_target: 'form'} %>
     <% end %>
-
+    <span style="display: none" id="laste"><%= Event.last.id %></span>
     <ul data-search-target="list">
+
     </ul>
   </div>
 
@@ -23,4 +24,3 @@
     </div>
   </div>
 </div>
-
