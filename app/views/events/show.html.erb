@@ -1,44 +1,56 @@
-<%= link_to events_path, class: "btn", style: "block-size: fit-content; width: fit-content" do%>
-  <i class="fa-sharp fa-solid fa-left-long"></i>
-<% end %>
-<div class = "actions">
-  <div class="btn actions">
-    <%= link_to event_bookmarks_path(@event, @bookmark), data: { turbo_method: :post } do %>
-      <i class="fa-solid fa-bookmark"> Bookmark</i>
-    <% end %>
-  </div>
-  <div class="btn actions">
-    <%= link_to new_event_review_path(@event) do%>
-      <i class="fa-solid fa-star" ,> Write a review</i>
-    <% end %>
-  </div>
-</div>
-<br>
-
-  <div style="width: 100%; height: 300px;"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-
-  <br>
-  <div class = "event55">
-        <h1 style="color:#4c57af">My reviews</h1>
-    </div>
-    <div class = "event" style = "block-size: fit-content; width: fit-content">
-      <% @event.reviews.each do |x| %>
-        <%= x.rating %>:
-        <%= x.comment %>
-        <div class="forumname"><%= x.user.email %></div>
-        <% if x.user_id == @user.id %>
-          <%= link_to edit_event_review_path(x) do%>
-            <i class="fa-solid fa-pen-to-square"></i>
-          <% end %>
-          <%= link_to review_path(x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
-            <i class="fa-solid fa-trash"></i>
-          <% end %>
-        <% end %>
-        <br>
+<div class="loginform", style="padding: 10px">
+      <%= link_to events_path, class: "btn", style: "block-size: fit-content; width: fit-content" do%>
+        <i class="fa-sharp fa-solid fa-left-long"></i>
       <% end %>
-    </div>
-  </div>
+      <div class = "event" >
+
+                <p style="font-size:30px"><%= @event.name %></p>
+            <div class="inner", style = "display:flex">
+                  <img src = <%=@event.image%> style= 'height:100px'>
+                <p style="margin-left:10px; font-weight:normal"><%= @event.description %></p>
+
+              </div>
+        </div>
+
+      <div class = "actions", style="margin-top:5px">
+        <div class="btn actions">
+          <%= link_to event_bookmarks_path(@event, @bookmark), data: { turbo_method: :post } do %>
+            <i class="fa-solid fa-bookmark"> Bookmark</i>
+          <% end %>
+        </div>
+        <div class="btn actions">
+          <%= link_to new_event_review_path(@event) do%>
+            <i class="fa-solid fa-star" ,> Write a review</i>
+          <% end %>
+        </div>
+      </div>
+      <br>
+
+        <div style="width: 100%; height: 300px;"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+        <br>
+        <div class = "event55">
+              <h1 style="color:#4c57af">Reviews</h1>
+          </div>
+          <div class = "event" style = "block-size: fit-content; width: fit-content">
+            <% @event.reviews.each do |x| %>
+              <%= x.rating %>:
+              <%= x.comment %>
+              <div class="forumname"><%= x.user.email %></div>
+              <% if x.user_id == @user.id %>
+                <%= link_to edit_event_review_path(x) do%>
+                  <i class="fa-solid fa-pen-to-square"></i>
+                <% end %>
+                <%= link_to review_path(x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
+                  <i class="fa-solid fa-trash"></i>
+                <% end %>
+              <% end %>
+              <br>
+            <% end %>
+          </div>
+        </div>
+      </div>
 </div>

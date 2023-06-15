@@ -10,14 +10,20 @@
     <h1 style="color:#4c57af">My bookmarks</h1>
   </div>
   <br>
-  <div class = "event" style = "margin-left:5px; font-size:20px">
+  <div class = "event" >
     <% @bookmarks.each do |x| %>
+    <div class="namecan", style="display:flex; justify-content:space-between">
+          <p style><%= link_to x.event.name, event_path(x.event) %></p>
+        <%= link_to bookmark_path(x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, style: "color:black; background-color:white; padding:0px" do%>
+          <i class="fa-solid fa-trash", style="color:#4c57af; font-size:larger"></i>
+    </div>
       <div class="inner", style = "display:flex">
-          <p>Event info:<%= x.event_id %></p>
-        <%= link_to bookmark_path(x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
-          <i class="fa-solid fa-trash"></i>
-        <% end %>
+             <img src = <%=x.event.image%> style= 'height:100px'>
+          <p style="margin-left:10px; font-weight:normal"><%= x.event.description %></p>
+          <br>
         </div>
+          <p style= 'text-align:center'>-----------------------------------------</p>
+        <% end %>
     <% end %>
   </div>
 </div>
