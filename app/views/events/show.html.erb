@@ -14,23 +14,12 @@
   </div>
 </div>
 <br>
-<div style="width: 100%; height: 300px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-<div class="loginform", style="padding: 10px">
 
-<br>
-
-  <%= link_to events_path, class: "event55", style: "block-size: fit-content; width: fit-content" do%>
-    <i class="fa-sharp fa-solid fa-left-long"></i>
-  <% end %>
   <div style="width: 100%; height: 300px;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
-  <%= link_to "Write a Review", new_event_review_path(@event), class:"event" %>
   <br>
   <div class = "event55">
     <h1>Reviews</h1>
