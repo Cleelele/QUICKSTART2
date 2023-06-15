@@ -31,6 +31,7 @@ class EventsController < ApplicationController
     @events = policy_scope(Event)
     @bookmark = Bookmark.new
     @user = current_user
+    @mood = @user.personality.mood
     if user_signed_in?
       if current_user.personality.nil?
         flash[:error] = 'Please complete the question to continue'
