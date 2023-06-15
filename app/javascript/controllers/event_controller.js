@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 import yaml from "js-yaml";
 
 export default class extends Controller {
-  static targets = ["input"];
+  static targets = ["input", "form"];
   token = null;
   location = null;
   matchingTags = [];
@@ -11,8 +11,7 @@ export default class extends Controller {
   connect() {
     this.getApiKey();
     this.loadMatchingTags();
-    console.log("connected!!!")
-    console.log("matching tags", this.matchingTags)
+    document.addEventListener('click', this.handleClick.bind(this));
   }
 
   loadMatchingTags() {
@@ -36,9 +35,12 @@ export default class extends Controller {
       });
   }
 
-  getLocation() {
-    const location = this.inputTarget.value;
-    const urlAddress = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(location)}&format=json`;
+  getLocation(event) {
+    event.preventDefault()
+    const form = event.currentTarget;
+    const addressInput = form.querySelector('input[data-event-target="input"]');
+    const address = addressInput.value;
+    const urlAddress = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(address)}&format=json`;
     fetch(urlAddress)
       .then(response => response.json())
       .then(data => {
@@ -53,8 +55,8 @@ export default class extends Controller {
     const url = 'https://test.api.amadeus.com/v1/security/oauth2/token';
     const formData = new URLSearchParams();
     formData.append('grant_type', 'client_credentials');
-    formData.append('client_id', 'LOVIapW5AiUe9FDa9Og7M0dwQYl5AFxn');
-    formData.append('client_secret', '0cLA54CvueM5RiON');
+    formData.append('client_id', '9ulXYrcAbq4ApwJ2kO3rab85s05Sk5OL');
+    formData.append('client_secret', 'GyG2eGE7X6BEmUIO');
     fetch(url, {
       method: 'POST',
       headers: {
@@ -152,7 +154,17 @@ export default class extends Controller {
             card.classList.add('activity-card');
 
             // Add activity details to the card
-
+            const link = document.createElement("a");
+            link.href = '/events';
+            link.textContent = "View more";
+            link.setAttribute("data-activity-name", matchingActivity.name);
+            link.setAttribute("data-activity-price", matchingActivity.price.amount);
+            link.setAttribute("data-activity-description", matchingActivity.description);
+            link.setAttribute("data-activity-img", matchingActivity.pictures[0]);
+            link.setAttribute("data-activity-category", matchingActivity.type);
+            link.classList.add("btn", "btn-primary", "add-activity-link");
+            // link.setAttribute("data-action", "click->event#createActivity");
+            card.appendChild(link);
 
             const img = document.createElement("img");
             if(matchingActivity.pictures.length === 0) {
@@ -166,18 +178,6 @@ export default class extends Controller {
             title.textContent = matchingActivity.name;
             card.appendChild(title);
 
-            //const description = document.createElement('p');
-            //description.textContent = matchingActivity.description;
-            //card.appendChild(description);
-
-            //const price = document.createElement('h6');
-            //if (matchingActivity.price.empty?) {
-              //price.textContent = "TBA"
-            //}else{
-              //price.textContent = `${matchingActivity.price.amount}0€`;
-            //}
-            //card.appendChild(price);
-
 
             // Insert the card into your HTML element
             ul.appendChild(card);
@@ -189,15 +189,64 @@ export default class extends Controller {
       });
   }
 
+  createActivity(event) {
+    event.preventDefault();
+    const link = event.target;
+    const activityName = link.getAttribute("data-activity-name");
+    const activityPrice = link.getAttribute("data-activity-price");
+    const activityCategory = link.getAttribute("data-activity-category");
+    const activityDescription = link.getAttribute("data-activity-description");
+    const activityImg = link.getAttribute("data-activity-img");
+
+    const address = this.inputTarget.value;
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+    const data = {
+      name: activityName,
+      price: activityPrice,
+      category: activityCategory,
+      description: activityDescription,
+      address: address,
+      image: activityImg
+    };
+
+    console.log("Create Activity Data:", data);
+
+    fetch('/events', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": csrfToken,
+      },
+      body: JSON.stringify(data),
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Failed to create event');
+        }
+      })
+      .then((responseData) => {
+        window.location.href = responseData.redirect_to; // Redirect to the show page
+      })
+      .catch((error) => {
+        console.error("Failed to create event:", error);
+      });
+  }
 
 
+  addEventListeners() {
+    const links = this.element.querySelectorAll('.add-activity-link');
+    links.forEach((link) => {
+      link.addEventListener('click', this.createActivity.bind(this));
+    });
+  }
 
-
+  handleClick(event) {
+    if (event.target.matches('.add-activity-link')) {
+      event.preventDefault();
+      this.createActivity(event);
+    }
+  }
 }
-
-
-
-// get request for geocode
-
-
-// `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(location)}&format=json`
