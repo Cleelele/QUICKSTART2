@@ -1,19 +1,23 @@
 
-<div style="padding-top:16px;">
+<!--<div style="padding-top:16px;">
 <%= link_to events_path, class: "backbutton", style: "block-size: fit-content; width: fit-content" do%>
   <i class="fa-sharp fa-solid fa-left-long"></i>
 <% end %>
 </div>
-<div class = "event">
-  <h1>My bookmarks</h1>
-</div>
-<div class = "event">
-  <% @bookmarks.each do |x| %>
-     <div class = content, style = "display:flex">
-        <p>Event info:<%= x.event_id %></p>
-       <%= link_to bookmark_path(x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
-        <i class="fa-solid fa-trash"></i>
-      <% end %>
-      </div>
-   <% end %>
+-->
+<div class="loginform", style="padding: 10px">
+<br>
+  <div class = "event55">
+    <h1>My bookmarks</h1>
+  </div>
+  <div class = "event55">
+    <% @bookmarks.each do |x| %>
+      <div class = content, style = "display:flex">
+          <p>Event info:<%= x.event_id %></p>
+        <%= link_to bookmark_path(x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
+          <i class="fa-solid fa-trash"></i>
+        <% end %>
+        </div>
+    <% end %>
+  </div>
 </div>

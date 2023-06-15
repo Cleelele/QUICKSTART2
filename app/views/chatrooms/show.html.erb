@@ -1,33 +1,37 @@
-
+<!--
 <div style="padding-top:16px;">
 <%= link_to events_path, class: "backbutton", style: "block-size: fit-content; width: fit-content" do%>
   <i class="fa-sharp fa-solid fa-left-long"></i>
 <% end %>
 </div>
-<div class="container chatroom event">
-  <h1 class="messages">#<%= @chatroom.name %></h1>
+-->
+<div class="loginform", style="padding: 10px">
+<br>
+  <div class="container chatroom event22">
+    <h1 class="messages"><%= @chatroom.name %></h1>
 
-  <div class="messages">
-    <% @chatroom.messages.each do |message| %>
-      <div id="message-<%= message.id %>">
-        <small>
-          <strong><%= message.user.email %></strong>
-          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-        </small>
-        <p><%= message.content %></p>
-      </div>
+    <div class="messages">
+      <% @chatroom.messages.each do |message| %>
+        <div id="message-<%= message.id %>">
+          <small>
+            <strong class="forumname"><%= message.user.email %></strong>
+            <i class="forumname"><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+          </small>
+          <p><%= message.content %></p>
+        </div>
+      <% end %>
+    </div>
+
+
+    <%= simple_form_for [@chatroom, @message],
+      html: {class: "d-flex"} do |f|
+    %>
+      <%= f.input :content,
+        label: false,
+        placeholder: "Message ##{@chatroom.name}",
+        wrapper_html: {class: "flex-grow-1"}
+      %>
+      <%= f.submit "Send", class: "btn btn-primary mb-3" %>
     <% end %>
   </div>
-
-
-  <%= simple_form_for [@chatroom, @message],
-    html: {class: "d-flex"} do |f|
-  %>
-    <%= f.input :content,
-      label: false,
-      placeholder: "Message ##{@chatroom.name}",
-      wrapper_html: {class: "flex-grow-1"}
-    %>
-    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-  <% end %>
 </div>
