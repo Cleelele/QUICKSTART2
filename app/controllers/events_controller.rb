@@ -10,10 +10,15 @@ class EventsController < ApplicationController
   def index
     #personalityType = getUserPersonalityType
     #matchingTags = getMatchingTagsForPersonalityType(personalityType)
-
     @events = policy_scope(Event)
     @bookmark = Bookmark.new
     @user = current_user
+    if user_signed_in?
+      if current_user.personality.nil?
+        flash[:error] = 'Please complete the question to continue'
+        redirect_to new_personality_path
+      end
+    end
   end
 
   def show

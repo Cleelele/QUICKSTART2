@@ -1,10 +1,9 @@
-<!--
+
 <div style="padding-top:16px;">
 <%= link_to events_path, class: "backbutton", style: "block-size: fit-content; width: fit-content" do%>
   <i class="fa-sharp fa-solid fa-left-long"></i>
 <% end %>
 </div>
--->
 <br>
 <div class="loginform", style="padding: 10px">
     <div class = "event55">
@@ -17,7 +16,7 @@
             <%= x.event.name %> -
             <%= x.rating %>:
             <%= x.comment %>
-            <%= link_to edit_event_review_path(x.event, x) do%>
+            <%= link_to edit_event_review_path(x, x.event) do%>
               <i class="fa-solid fa-pen-to-square"></i>
             <% end %>
             <%= link_to review_path(x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
