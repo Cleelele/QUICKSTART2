@@ -1,12 +1,12 @@
 <div class="loginform", style="padding: 10px">
     <div style="padding-top:16px;">
-    <%= link_to events_path, class: "backbutton", style: "block-size: fit-content; width: fit-content" do%>
+    <%= link_to event_path(@event), class: "backbutton", style: "block-size: fit-content; width: fit-content" do%>
       <i class="fa-sharp fa-solid fa-left-long"></i>
     <% end %>
     </div>
   <br>
-
-    <div class = "event55" data-controller="star-rating">
+      <h1 class = "event55">New review</h1>
+    <div class = "event55">
         <%= simple_form_for [@event, @review] do |f| %>
           <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", input_html: {data: {controller: "star-rating"}} %>
           <%= f.input :comment %>
