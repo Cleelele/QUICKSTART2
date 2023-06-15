@@ -10,9 +10,10 @@ class PersonalitiesController < ApplicationController
     # set user to personality( current user )
     @personality.user = current_user
     #call set_type method pass @personality.answer
-    set_mood(@personality.answer)
+    @personality.mood = set_mood(@personality.answer)
+    
     authorize @personality
-    if @personality.save!
+    if @personality.save
       redirect_to root_path
     else
       render :new, status: :unprocessable_entity
@@ -30,8 +31,9 @@ class PersonalitiesController < ApplicationController
     @user = current_user
     @personality.user = current_user
     #call set_type method pass @personality.answer
-    @personality.mood = set_mood(params[:personality][:answer])
-    if @personality.update!(personality_params)
+    @personality.answer = personality_params[:answer]
+    @personality.mood = set_mood(@personality.answer)
+    if @personality.update(personality_params)
       redirect_to root_path
     else
       render :edit, status: :unprocessable_entity
@@ -44,24 +46,24 @@ class PersonalitiesController < ApplicationController
   def set_mood(answer)
     # case = when "answer" then "personality" x 9
     case answer
-     when "Exciting adventurous activities and outdoors fun (1) 🏄‍♀️"
-      return "Adventurous"
+     when "Adventurous outdoor activities (1) 🏄‍♀️"
+      return "adventurous explorer"
      when "Exploring museums and cultural sites (2) 🕌🌆"
-      return "Culture Enthusiasts"
+      return "culture enthusiasts"
      when "Trying new restaurants and cuisines (3)🍔"
-      return "Food Connoisseurs"
+      return "food connoisseur"
      when "Enjoying the nightlife and live music (4) 🪩🎶"
-      return "Nightlife Seekers"
+      return "nightlife seekers"
      when "Engaging in wellness activities and fitness (5) 🏋️‍♀️🧖‍♀️"
-      return "Wellness and Fitness Enthusiasts"
+      return "wellness and fitness enthusiast"
      when "Attending art exhibitions and performances (6) 🎨🎭"
-      return "Arts and Performance Lovers"
+      return "arts and performance lover"
      when "Spending quality time with family in kid-friendly locations (7) 👨‍👩‍👧‍👦"
-      return "Family-Friendly"
+      return "family friendly"
      when "Bringing my professionalism one step further (8) 🧑‍⚖️👩‍🎓"
-      return "Career-Oriented Professionals"
+      return "career oriented professional"
      when "Accessible and inclusive activities for people with disabilities (9)🧑‍🦽🧑‍🦯"
-      return "Options for Handicapped People"
+      return "handicapped person"
      else
       return "Unknown Type"
     end
@@ -69,7 +71,7 @@ class PersonalitiesController < ApplicationController
 
 
   def personality_params
-    params.require(:personality).permit(:answer)
+    params.require(:personality).permit(:answer, :mood)
   end
 
 end
