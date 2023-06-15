@@ -14,6 +14,11 @@ class EventsController < ApplicationController
     @events = policy_scope(Event)
     @bookmark = Bookmark.new
     @user = current_user
+    if user_signed_in?
+      if current_user.personality.nil?
+        redirect_to new_personality_path, status: :unprocessable_entity
+      end
+    end
   end
 
   def show
