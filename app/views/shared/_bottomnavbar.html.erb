@@ -1,32 +1,36 @@
       <% if user_signed_in? %>
 <nav class="bottomnavbar">
   <ul class="nav-carlos">
-       <li class="nav-item active">
-         <%= link_to events_path, class: "nav-link" do %>
-         <i class="fa-solid fa-magnifying-glass-location", style="color:#4c57af"></i>
-       <% end %>
-      </li>
+        <li class="nav-item active">
+          <%= link_to events_path, class: "nav-link" do %>
+          <i class="fa-solid fa-magnifying-glass-location", style="color:#4c57af; font-size: 26px"></i>
+        <% end %>
+        </li>
 
         <li class="nav-item">
           <%= link_to bookmarks_path, class: "nav-link" do%>
-          <i class="fa-solid fa-bookmark", style="color:#4c57af"></i>
+          <i class="fa-solid fa-bookmark", style="color:#4c57af; font-size: 26px"></i>
           <% end %>
         </li>
+
         <li class="nav-item">
           <%= link_to reviews_path, class: "nav-link" do%>
-          <i class="fa-solid fa-star", style="color:#4c57af"></i>
+          <i class="fa-solid fa-star", style="color:#4c57af; font-size: 26px"></i>
            <% end %>
         </li>
+
         <li class="nav-item">
           <%= link_to edit_personality_path(Personality.last), class: "nav-link" do%>
-         <i class="fa-solid fa-clipboard-question", style="color:#4c57af"></i>
+         <i class="fa-solid fa-face-smile", style="color:#4c57af; font-size: 26px"></i>
           <% end %>
         </li>
+
          <li class="nav-item">
           <%= link_to chatroom_path(Chatroom.last), class: "nav-link" do %>
-         <i class="fa-solid fa-comment", style="color:#4c57af"></i>
+         <i class="fa-solid fa-comment", style="color:#4c57af; font-size: 26px"></i>
            <% end %>
         </li>
+
         <% end %>
   </ul>
 </nav>
