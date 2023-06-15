@@ -13,24 +13,25 @@
           <% end %>
         </li>
 
-        <li class="nav-item">
-          <%= link_to reviews_path, class: "nav-link" do%>
-          <i class="fa-solid fa-star", style="color:#4c57af; font-size: 26px"></i>
-           <% end %>
-        </li>
+              <li class="nav-item">
+                <%= link_to reviews_path, class: "nav-link" do%>
+                <i class="fa-solid fa-star", style="color:#4c57af; font-size: 26px"></i>
+                <% end %>
+              </li>
 
-        <li class="nav-item">
-          <%= link_to edit_personality_path(Personality.last), class: "nav-link" do%>
-         <i class="fa-solid fa-face-smile", style="color:#4c57af; font-size: 26px"></i>
-          <% end %>
-        </li>
+              <li class="nav-item">
+                <%= link_to edit_personality_path(Personality.last), class: "nav-link" do%>
+              <i class="fa-solid fa-face-smile", style="color:#4c57af; font-size: 26px"></i>
+                <% end %>
+              </li>
 
-         <li class="nav-item">
-          <%= link_to chatroom_path(Chatroom.last), class: "nav-link" do %>
-         <i class="fa-solid fa-comment", style="color:#4c57af; font-size: 26px"></i>
-           <% end %>
-        </li>
+              <li class="nav-item">
+                <%= link_to chatroom_path(Chatroom.last), class: "nav-link" do %>
+              <i class="fa-solid fa-comment", style="color:#4c57af; font-size: 26px"></i>
+                <% end %>
+              </li>
 
-        <% end %>
+              <% end %>
+      
   </ul>
 </nav>
