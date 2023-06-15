@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 import yaml from "js-yaml";
 
 export default class extends Controller {
-  static targets = ["input", "form"];
+  static targets = ["input", "form", "lid"];
   token = null;
   location = null;
   matchingTags = [];
@@ -228,9 +228,11 @@ export default class extends Controller {
         }
       })
       .then((responseData) => {
-        window.location.href = responseData.redirect_to; // Redirect to the show page
+        //window.location.href = "https://google.com"; // Redirect to the show page
       })
       .catch((error) => {
+        const event_last = document.getElementById("laste");
+        window.location.href = `/events/${parseInt(event_last.innerText) + 1}`;
         console.error("Failed to create event:", error);
       });
   }
