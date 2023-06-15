@@ -48,7 +48,7 @@ class PersonalitiesController < ApplicationController
       return "Adventurous"
      when "Exploring museums and cultural sites (2) 🕌🌆"
       return "Culture Enthusiasts"
-     when "Trying new restaurants and cuisines (3)🍔"
+     when "Trying new restaurants and cuisines (3) 🍔"
       return "Food Connoisseurs"
      when "Enjoying the nightlife and live music (4) 🪩🎶"
       return "Nightlife Seekers"
@@ -60,7 +60,7 @@ class PersonalitiesController < ApplicationController
       return "Family-Friendly"
      when "Bringing my professionalism one step further (8) 🧑‍⚖️👩‍🎓"
       return "Career-Oriented Professionals"
-     when "Accessible and inclusive activities for people with disabilities (9)🧑‍🦽🧑‍🦯"
+     when "Accessible and inclusive activities for people with disabilities (9) 🧑‍🦽🧑‍🦯"
       return "Options for Handicapped People"
      else
       return "Unknown Type"
