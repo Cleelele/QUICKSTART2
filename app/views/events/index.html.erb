@@ -1,13 +1,18 @@
+
 <div class="eventpage bg-image">
   <div class="eventsheader">
-    <h6>Explore a city</h6>
+    <h6 style="font-size:30px; color: #4c57af; padding-left: 25px; margin-top: 10px">Explore a city</h6>
   </div>
+<br>
 
+<div class="searchfield", style="padding-left:25px">
   <div data-controller="event">
     <%= form_with url: events_path, method: :get, data: { action: "submit->event#getLocation" } do |f| %>
 
       <%= f.text_field :query, data: { event_target: "input", personality_type: current_user.personality.mood }, class: "inputfield" %>
+
       <%= f.submit "Search", class: "searchbtn" %>
+
     <% end %>
 
     <ul data-search-target="list">
