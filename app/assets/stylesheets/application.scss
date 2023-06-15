@@ -20,9 +20,12 @@
 @import "star-rating.js/dist/star-rating.css";
 
 
-body{
-  //background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('background.jpg');
-  background-size:auto;
+.bg-home{
+  
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('background.jpg');
+  background-size:cover;
+
+
 }
 
 //.bg-image {

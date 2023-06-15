@@ -1,20 +1,26 @@
-<h1 class="event">Log in</h1>
+<br>
+<div class="loginform" style= "padding: 10px">
+  <h1 style="color:#4c57af">Log in</h1>
+  <br>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
-  <div class="event">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
+  <!-- <div class="event"> -->
+      <%= f.input :email,
+                  required: false,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" } %>
+      <%= f.input :password,
+                  required: false,
+                  input_html: { autocomplete: "current-password" } %>
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    <!--</div>-->
 
-  <div class="btn">
-    <%= f.button :submit, "Log in"%>
-  </div>
-<% end %>
+    <div class="btn", style="padding: 1px; font-size:smaller; font-style:normal; margin-bottom: 2px">
+      <%= f.button :submit, "Log in"%>
+    </div>
 
-<%= render "devise/shared/links" %>
+  <% end %>
+   <p style="margin-bottom: 0px">or</p>
+
+  <%= render "devise/shared/links" %>
+</div>

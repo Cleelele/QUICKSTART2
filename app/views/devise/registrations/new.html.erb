@@ -1,25 +1,28 @@
-<h1 class="event">Sign up</h1>
+<br>
+<div class="loginform", style="padding: 10px">
+  <h2 style="color:#4c57af">Sign up</h1>
+<br>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
-  <%= f.error_notification %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="event">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :photo, as: :file %>
-  </div>
+    <div class="event55">
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" }%>
+      <%= f.input :password,
+                  required: true,
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  required: true,
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :photo, as: :file %>
+    </div>
 
-    <%= f.button :submit, "Sign up", class: "btn" %>
-<% end %>
-
-<%= render "devise/shared/links" %>
-^
+      <%= f.button :submit, "Sign up", class: "btn" %>
+  <% end %>
+<p style="margin-bottom: 0px; font-size: smaller, margin-top: 5px, margin-bottom: 5px">or go back to</p>
+  <%= render "devise/shared/links" %>
+</div>
