@@ -19,7 +19,6 @@ class EventsController < ApplicationController
         format.html { redirect_to event_path(@event) }
         format.json { render json: { redirect_to: event_path(@event) } }
       else
-        format.html { render :new }
         format.json { render json: { error: 'Failed to create event', errors: @event.errors.full_messages }, status: :unprocessable_entity }
       end
     end
