@@ -1,26 +1,30 @@
-
+<!--
 <div style="padding-top:16px;">
 <%= link_to events_path, class: "backbutton", style: "block-size: fit-content; width: fit-content" do%>
   <i class="fa-sharp fa-solid fa-left-long"></i>
 <% end %>
 </div>
-
-<div class = "event">
-    <h1>My reviews</h1>
-</div>
-<div class = "event">
-  <% @reviews.each do |x| %>
-    <% if current_user.id == @user.id %>
-        <%= x.event.name %> -
-        <%= x.rating %>:
-        <%= x.comment %>
-        <%= link_to edit_event_review_path(x.event, x) do%>
-          <i class="fa-solid fa-pen-to-square"></i>
-        <% end %>
-        <%= link_to review_path(x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
-          <i class="fa-solid fa-trash"></i>
-    <% end %>
+-->
+<br>
+<div class="loginform", style="padding: 10px">
+    <div class = "event55">
+        <h1>My reviews</h1>
+    </div>
   <br>
-  <% end %>
-  <% end %>
+    <div class = "event">
+      <% @reviews.each do |x| %>
+        <% if current_user.id == @user.id %>
+            <%= x.event.name %> -
+            <%= x.rating %>:
+            <%= x.comment %>
+            <%= link_to edit_event_review_path(x.event, x) do%>
+              <i class="fa-solid fa-pen-to-square"></i>
+            <% end %>
+            <%= link_to review_path(x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
+              <i class="fa-solid fa-trash"></i>
+        <% end %>
+      <br>
+      <% end %>
+      <% end %>
+    </div>
 </div>

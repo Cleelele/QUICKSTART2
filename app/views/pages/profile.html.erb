@@ -1,19 +1,23 @@
-
+<!--
 <div style="padding-top:16px;">
 <%= link_to events_path, class: "backbutton", style: "block-size: fit-content; width: fit-content" do%>
   <i class="fa-sharp fa-solid fa-left-long"></i>
 <% end %>
 </div>
-<div class = "event">
-<% if @user.photo.key.nil? %>
-    <%= image_tag "https://d32ogoqmya1dw8.cloudfront.net/images/serc/empty_user_icon_256.v2.png", alt: "profile", style: "height:100px" %>
-<% else %>
-  <%= cl_image_tag @user.photo.key, height: 100, crop: :fill %>
-<% end %>
+-->
+<div class="loginform", style="padding: 10px">
 <br>
-<br>
-  <h2><strong>User #: </strong><%= @user.id %></h2>
-  <h2><strong>Email: </strong><%= @user.email %></h2>
-  <h2><strong>Bookmarks: </strong><%= @user.bookmark_ids.count %></h2>
-  <h2><strong>Reviews: </strong><%= @user.review_ids.count %></h2>
+  <div class = "event55">
+  <% if @user.photo.key.nil? %>
+      <%= image_tag "https://d32ogoqmya1dw8.cloudfront.net/images/serc/empty_user_icon_256.v2.png", alt: "profile", style: "height:100px" %>
+  <% else %>
+    <%= cl_image_tag @user.photo.key, height: 100, crop: :fill %>
+  <% end %>
+  <br>
+  <br>
+    <h2><strong>User ID: </strong><%= @user.id %></h2>
+    <h2><strong>Email: </strong><%= @user.email %></h2>
+    <h2><strong>My bookmarks: </strong><%= @user.bookmark_ids.count %></h2>
+    <h2><strong>My reviews: </strong><%= @user.review_ids.count %></h2>
+  </div>
 </div>
