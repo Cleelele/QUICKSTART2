@@ -6,9 +6,9 @@
     <div class = "event">
       <% @reviews.each do |x| %>
         <% if current_user.id == @user.id %>
-            <%= x.event.name %> -
+            <%= link_to x.event.name, event_path(x.event) %> -
             <%= x.rating %>:
-            <%= x.comment %>
+            <p style = "font-weight:normal"><%= x.comment %></p>
             <%= link_to edit_event_review_path(x, x.event) do%>
               <i class="fa-solid fa-pen-to-square"></i>
             <% end %>

@@ -19,7 +19,7 @@
     </div>
       <div class="inner", style = "display:flex">
              <img src = <%=x.event.image%> style= 'height:100px'>
-          <p style="margin-left:10px; font-weight:normal"><%= x.event.description %></p>
+          <p style="margin-left:10px; font-weight:normal"><%= x.event.description.html_safe %></p>
           <br>
         </div>
           <p style= 'text-align:center'>-----------------------------------------</p>
