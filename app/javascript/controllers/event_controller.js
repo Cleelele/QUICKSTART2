@@ -55,8 +55,8 @@ export default class extends Controller {
     const url = 'https://test.api.amadeus.com/v1/security/oauth2/token';
     const formData = new URLSearchParams();
     formData.append('grant_type', 'client_credentials');
-    formData.append('client_id', '9ulXYrcAbq4ApwJ2kO3rab85s05Sk5OL');
-    formData.append('client_secret', 'GyG2eGE7X6BEmUIO');
+    formData.append('client_id', 'ZrFCJvFHr9BvTZaRsUzINcEa6qKrDjDH');
+    formData.append('client_secret', 'AWkz2Abx4owWR2Ag');
     fetch(url, {
       method: 'POST',
       headers: {
